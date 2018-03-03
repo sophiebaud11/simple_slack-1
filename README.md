@@ -41,6 +41,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
 
 1. In Atom, right-click on the `public` and add a folder for your static page project, in this repo we’ll call ours `first-project`.  Inside this folder we’re going to create a file and save it as `index.html`.
 2. If you already know a bunch about HTML, you can get as elaborate as you’d like at this stage, but you are starting out, copy and paste in the following code:
+
     ```
 <body>
 	<h2>steps</h2>
@@ -57,6 +58,7 @@ The `<` and `>` characters define HTML tags, in this case tags for the `body` (w
 5. In order to style the page, we are going to create a `style.css` file (right in the current `first-project` folder).  So right click on your `first-project` folder and create a new file that you save as `style.css`.
 6. to connect this file to your html page, you'll need to reopen the `index.html` file.  And when working with both a css file and an html file in Atom, it's nice to be able to see both at once.  So find your html file in the project hierarchy on the left, right-click on it, and select "split right." You should now see your two files side by side.
 7. In the `index.html` file, add the following lines of code at the top:
+
     ```
 <!DOCTYPE html>
 <html lang="en-US">
