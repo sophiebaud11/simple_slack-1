@@ -40,8 +40,8 @@ Here are the steps for creating the blank express app template (and connecting i
 To start out, let’s add a basic html page to our public folder and get it connected to some CSS styles and JS script (and if you are just using express to start a development server while you explore a client-side js library like d3, for instance, this may be as far as you need to go in this tutorial).
 
 1. In Atom, right-click on the `public` and add a folder for your static page project, in this repo we’ll call ours `first-project`.  Inside this folder we’re going to create a file and save it as `index.html`.
-<li> If you already know a bunch about HTML, you can get as elaborate as you’d like at this stage, but you are starting out, copy and paste in the following code:
-    ```html
+2. If you already know a bunch about HTML, you can get as elaborate as you’d like at this stage, but you are starting out, copy and paste in the following code:
+   ```html
     <body>
         <h2>steps</h2>
         <ol>
@@ -50,7 +50,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
         <li>link it to a script.js page</li>
         </ol>
     </body>
-    ```  
+   ```  
     The `<` and `>` characters define HTML tags, in this case tags for the `body` (which contains the HTML that browser will display), `h2` for the heading, `ol` for ordered list, and `li` for list elements.  Note the way the opening and closing tags for the ordered list (`<ol>` and `</ol>`) bracket the list elements, and the way the body tags bracket everything.  This nesting structure is a big part of what you'll encounter (and become comfortable with) as you learn HTML.
 </l1>
 3. if you now go to [localhost:3000/first-project](http://localhost:3000/first-project) in your web browser you should see the page.  For fun, change the `<ol>` and `</ol>` tags (the opening and closing ordered list tags) to `<ul>` and `</ul>` (to change it to an unordered list).  Play around adding other stuff and other tags, including h1, h2, h3, etc for different headings, p for paragraphs, etc.  Don’t forget both opening and closing tags.  For a detailed intro go [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals), for a complete reference go [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
