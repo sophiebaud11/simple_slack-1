@@ -81,7 +81,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
     }
     ```
     Once you save it, you should be able to head back to your browser, hit command+R to reload, and see a dramatic difference.  Take a look [here](https://www.w3schools.com/cssref/default.asp) to see some of the properties you can change, and start modifying additional attributes of your HTML elements.
-9. The `body` and `h2` you see in the css file are called "selectors", and in many cases using the basic HTML elements as your selectors is great (if you want h1's to be huge and h2's to be medium and h3's to be small and blue, say).  But sometimes you'll want to target a very specific portion of your page, or a specific group of elements, and for this we need to start assigning some of your html elements "classes" and "ids".  To get started, grab this chunk of html and paste it in just before your opening `<ol>` tag to add some "divs"--empty divisions of the site that we'll turn into colored boxes:
+9. The `body` and `h2` you see in the css file are called "selectors", and in many cases using the basic HTML elements as your selectors is great (if you want h1's to be huge and h2's to be medium and h3's to be small and blue, say).  But sometimes you'll want to target a very specific item on your page, or a specific group of elements, and for this we need to start assigning some of your html elements "classes" and "ids".  To get started, grab this chunk of html and paste it in just before your opening `<ol>` tag to add some "divs"--empty divisions of the site that we'll turn into colored boxes:
     ```HTML
     <div id="big-box">
     </div>    
@@ -115,7 +115,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
       }
     }
     ```
-    Try adding a few extra changes--you can change anything you'd like, but usually this sort of "media query" is used to give the page a new layout when it's viewed on a small screen (like a phone).
+    Try adding a few more lines--you can change anything you'd like, but usually this sort of "media query" is used to give the page a new layout when it's viewed on a small screen (like a phone).
     Next, add the following little chunk to add some behavior to your `.small-box` divs whenever a user hovers over them with the mouse:
     ```css
     .small-box:hover {
