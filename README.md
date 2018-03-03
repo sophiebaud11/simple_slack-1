@@ -1,26 +1,36 @@
-## SIMPLE SLACK APP TUTORIAL
+## SIMPLE EXPRESS & SLACK APP TUTORIAL
+
+[Express](https://expressjs.com/) is a ‘minimalist’ framework for [node.js](https://nodejs.org/en/about/) applications. It will offer us a fast, relatively simple way to get started building a web application, which in this case will also involve hooks into our Slack team, making it possible to build slash commands and other useful stuff.
+This tutorial is really going to build from the ground up, presuming no knowledge of anything (though in some cases we'll link out to more detailed and comprehensive intros to what's covered here--this is going to teach you the bare minimum required to get this app up and running).  Key tools covered inlude:
+
+- javascript
+- node.js
+- express.js
+- html
+- css
+- js scripting on client side
+- mongodb
+- slack api
 
 ### CREATING AN BLANK EXPRESS APP
-
-[Express](https://expressjs.com/) is a ‘minimalist’ framework for [node.js](https://nodejs.org/en/about/) applications. It will offer us a fast, relatively simple way to get started building a web application, which in this case will also involve hooks into our Slack team, making it possible to build slash commands and other cool stuff.
 
 Here are the steps for creating the blank express app template (and connecting it to [github.com](http://www.github.com)).
 
 1. create empty repository on [github.com](http://www.github.com) (with node.js .gitignore and MIT license selected from the dropdown menus, and “initialize with a README” checked)
 2. clone to Dev folder with `git clone [REPO_NAME]`
-3. if you now type `ls`, you should see a folder with the same name as your repository—this is where you are going to put your app
+3. if you now type `ls` (for "list"), you should see a folder with the same name as your repository—this is where you are going to put your app
 4. change directories into your app's root folder by typing `cd [MY_APP]`
 5. use express-generator to create an empty express app template by typing `express —view=ejs` (go ahead and enter `ls` to take a look at what has shown up after this command)
 6. install node modules with `npm install`
 7. at this point you should be able to type `npm start` and then open the app up in your web browser at [localhost:3000](http://localhost:3000).   
-8. now that we have an blank template, we want to begin adding some code, so go back to Terminal (and still inside your app's root folder), type `atom .` to open up the contents of the current directory in Atom (your text editor).
+8. now that we have an blank template, we will want to begin adding some code, so go back to Terminal (and still inside your app's root folder), type `atom .` to open up the contents of the current directory in Atom (your text editor).
 9. you’ll see a bunch of folders and files:
 	- `bin` is a folder with an important file that actually starts up your app, but we won’t be touching it
 	- `public` is the folder that holds all the files your server will serve up for visitors to your site.  All of your ’static’ html pages can go here. More on how to do this in a bit.
 	- `routes` is where we’ll put files that tell your app what to do with users’ requests, like if they type in `www.yourapp.com/theirname/resources` and you want to read their name and send them back the gifs they’ve saved on your service, say.  We won’t actually build a special page for each use that we save in `public`––this would take forever––instead we’ll grab their name, and check for relevant files on the server side, and then plop these into an html template, which brings us to . . .
-	- `views`, which holds our view-templates.  In this case we are using ejs (we asked for this when we ran express-generator above), so you’ll see a couple of files with the .ejs extension.  We’ll do something to one of them in the next step.
+	- `views`, which holds our view-templates.  In this case we are using ejs (we asked for this when we ran express-generator above), so you’ll see a couple of files with the .ejs extension.  We’ll be doing something to one of them soon.
 	- `.gitignore` is the file that tells git what to include and what to exclude when uploading files to github.  As long as you selected ‘node’ from the dropdown menu when creating your repository in github, you shouldn’t need to touch this file while doing this tutorial.
-	- `app.js` is a really key file—the heart of your app (I know we said the that file in `bin` is where the app starts, but you you check that file out you’ll see that the very first thing it does is bring in `app.js` with a `require` statement, and then it runs `http.createserver` for the app).  We are going to add some things to `app.js`, but we won’t be deleting or changing anything that’s there right now (in this tutorial anyway).
+	- `app.js` is a really key file—the heart of your app (I know we said the that file in `bin` is where the app starts, but if you check that file out you’ll see that the very first thing it does is bring in `app.js` with a `require` statement, and then it runs `http.createserver` for the app--don't worry if you're new to js and this all looks confusing right now).  We are going to **add** some things to `app.js`, but we won’t be deleting or changing anything that’s there right now (in this tutorial anyway).
 	- `LICENSE` is just a text file with the MIT license.
 	- `package.json` is important––you can think of it as holding some of the “settings” of the app. It has a list of dependencies, which are the node_modules we’ll need for the project. `express-generator` put some there already, and when we typed `npm install`, npm looked in this file for the dependencies to install and then downloaded them from the cloud.
 	- README.md is where you’ll put notes on your work that you’d like collaborators or other users of your code to see.  Whatever you put here will show up on the github page for your repository.
