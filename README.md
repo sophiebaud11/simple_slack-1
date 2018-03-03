@@ -17,21 +17,13 @@ This tutorial is really going to build from the ground up, presuming no knowledg
 Here are the steps for creating the blank express app template (and connecting it to [github.com](http://www.github.com)).
 
 1. create empty repository on [github.com](http://www.github.com) (with "node.js" selected for the `.gitignore` file, "MIT" selected for the license type, and “initialize with a README” checked)
-
 2. clone to Dev folder with `git clone [REPO_NAME]`
-
 3. if you now type `ls` (for "list"), you should see a folder with the same name as your repository—this is where you are going to put your app
-
 4. change directories into your app's root folder by typing `cd [MY_APP]`
-
 5. use express-generator to create an empty express app template by typing `express —view=ejs` (go ahead and enter `ls` to take a look at what has shown up after this command)
-
 6. install node modules with `npm install`
-
 7. at this point you should be able to type `npm start` and then open the app up in your web browser at [localhost:3000](http://localhost:3000).
-
 8. now that we have an blank template, we will want to begin adding some code, so go back to Terminal (and still inside your app's root folder), type `atom .` to open up the contents of the current directory in Atom (your text editor).
-
 9. you’ll see a bunch of folders and files:
 	- `bin` is a folder with an important file that actually starts up your app, but we won’t be touching it
 	- `public` is the folder that holds all the files your server will serve up for visitors to your site.  All of your ’static’ html pages can go here. More on how to do this in a bit.
@@ -75,7 +67,6 @@ To start out, let’s add a basic html page to our public folder and get it conn
     </head>
     ```
     Unlike the `body`, the `head` of the document doesn't get displayed in the browser, but it still does some useful stuff for us: for instance, it will see to it that the words "First Project" are there in the Chrome or Firefox tab when you open the page in your browser (that's what `<title>` does); and, most importantly for us right now, it will tell your browser to look in the `style.css` stylesheet for info on the styles to apply to your various HTML elements.
-
 8. In your `style.css` file, paste in the following chunk of code:
     ```css
     body {
@@ -84,12 +75,12 @@ To start out, let’s add a basic html page to our public folder and get it conn
     }
 
     h2 {
-    font-family: Futura;
-    text-transform: uppercase;
+        font-family: Futura;
+        font-size: 50px;
+        text-transform: uppercase;
     }
     ```
-    Once you save it, you should be able to head back to your browser, hit command+R to reload, and see a dramatic difference.
-
+    Once you save it, you should be able to head back to your browser, hit command+R to reload, and see a dramatic difference.  Take a look [here](https://www.w3schools.com/cssref/default.asp) to see some of the properties you can change, and start modifying additional attributes of your HTML elements.
 9. The `body` and `h2` you see in the css file are called "selectors", and in many cases using the basic HTML elements as your selectors is great (if you want h1's to be huge and h2's to be medium and h3's to be small and blue, say).  But sometimes you'll want to target a very specific portion of your page, or a specific group of elements, and for this we need to start assigning some of your html elements "classes" and "ids".  To get started, grab this chunk of html and paste it in just before your opening `<ol>` tag to add some "divs"--empty divisions of the site that we'll turn into colored boxes:
     ```HTML
     <div id="big-box">
@@ -115,11 +106,28 @@ To start out, let’s add a basic html page to our public folder and get it conn
       background-color: rgba(25,80,200,0.7)
     }
     ```
-    The first selector, `.small-box` selects all of the elements with the `small-box` class, while the second selects the **one** element with the id `big-box` (`id`s are exclusive--you can only assign them to one element on a page).  And they each define the width, height, and background-color for the divs.  If you go back the browser now, you should see your boxes.
-10. add hover
+    The first selector, `.small-box` selects all of the elements with the `small-box` class, while the second selects the **one** element with the id `big-box` (`id`s are exclusive--you can only assign them to one element on a page).  And they each define the width, height, and background-color for the divs.  If you go back the browser now, you should see your boxes.  Change some colors and add some more boxes to get a sense of how all this works.  Add some text to a box and see if you can style it.
+10. While most of the interactivity we build will happen with javascript, there are some things you can do with just css.  For instance, if you paste the following chunk of css at the bottom of your `style.css` file and then resize your web browser, you should see the `#big-box` div change size once the browser crosses the 600px-wide threshold:
+    ```css
+    @media screen and (max-width: 600px)  {
+      #big-box {
+        width: 100px;
+      }
+    }
+    ```
+    Try adding a few extra changes--you can change anything you'd like, but usually this sort of "media query" is used to give the page a new layout when it's viewed on a small screen (like a phone).
+    Next, add the following little chunk to add some behavior to your `.small-box` divs whenever a user hovers over them with the mouse:
+    ```css
+    .small-box:hover {
+      background-color: rgba(255,240,40,0.9);
+      width: 250px;
+    }
+    ```
+    Reload the page and you should see your small red squares turn into wide yellow rectangles when you hover over them.  Try adding a `:hover` selector for one of your other elements, and experiment with changing different properties.
+11. To add an extra little bit of polish, add this one line to your `.small-box` css: `transition: 1s;` . . . reload the page and see how much more elegant the `:hover` effects are.  If you are lost at this point, you can find the complete css for this practice project in the [github repository](https://github.com/learninglab-dev/simple_slack/blob/master/public/first-project/style.css).
 
-11. add animation
+## JS on the client side
 
-12. script: log to console
+## Creating routes and views
 
-13. script: getElement and change innerHTML
+## Handling Post requests
