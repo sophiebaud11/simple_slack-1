@@ -41,7 +41,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
 
 1. In Atom, right-click on the `public` and add a folder for your static page project, in this repo we’ll call ours `first-project`.  Inside this folder we’re going to create a file and save it as `index.html`.
 2. If you already know a bunch about HTML, you can get as elaborate as you’d like at this stage, but you are starting out, copy and paste in the following code:
-    ```
+    ```html
         <body>
         <h2>steps</h2>
         <ol>
