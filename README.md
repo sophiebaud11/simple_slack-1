@@ -62,13 +62,12 @@ To start out, let’s add a basic html page to our public folder and get it conn
     <!DOCTYPE html>
     <html lang="en-US">
     <head>
-		    <meta charset="UTF-8">
-		    <title>First Project</title>
-		    <link rel="stylesheet" href="style.css" type="text/css">
+        <meta charset="UTF-8">
+        <title>First Project</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
-		```
-
-This will do a couple of things: first, it will see to it that the words "First Project" are there in the Chrome or Firefox tab when you open the page in your browser (that's what `<title>` does); second, it will tell your browser to look in the `style.css` stylesheet for info on the styles to apply to your various HTML elements.
+    ```
+    This will do a couple of things: first, it will see to it that the words "First Project" are there in the Chrome or Firefox tab when you open the page in your browser (that's what `<title>` does); second, it will tell your browser to look in the `style.css` stylesheet for info on the styles to apply to your various HTML elements.
 8. In your `style.css` file, paste in the following chunk of code:
     ```
 body {
