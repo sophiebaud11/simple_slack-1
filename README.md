@@ -88,6 +88,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
         background-color: rgba(20,20,20,0.7);
         color: white;
     }
+
     h2 {
     font-family: Futura;
     text-transform: uppercase;
@@ -112,8 +113,8 @@ To start out, let’s add a basic html page to our public folder and get it conn
       width: 50px;
       height: 50px;
       background-color: rgba(255,0,40,0.7)
-
     }
+      
     #big-box {
       width: 250px;
       height: 250px;
