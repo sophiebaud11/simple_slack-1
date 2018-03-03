@@ -16,7 +16,7 @@ This tutorial is really going to build from the ground up, presuming no knowledg
 
 Here are the steps for creating the blank express app template (and connecting it to [github.com](http://www.github.com)).
 
-1. create empty repository on [github.com](http://www.github.com) (with node.js .gitignore and MIT license selected from the dropdown menus, and “initialize with a README” checked)
+1. create empty repository on [github.com](http://www.github.com) (with "node.js" selected for the `.gitignore` file, "MIT" selected for the license type, and “initialize with a README” checked)
 2. clone to Dev folder with `git clone [REPO_NAME]`
 3. if you now type `ls` (for "list"), you should see a folder with the same name as your repository—this is where you are going to put your app
 4. change directories into your app's root folder by typing `cd [MY_APP]`
