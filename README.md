@@ -77,7 +77,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
     h2 {
     font-family: Futura;
     text-transform: uppercase;
-}
+    }
     ```
     Once you save it, you should be able to head back to your browser, hit command+R to reload, and see a dramatic difference.
 9. ok.
