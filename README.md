@@ -130,4 +130,19 @@ To start out, let’s add a basic html page to our public folder and get it conn
 
 ## Creating routes and views
 
+
+1. Take a look at lines 10 & 27 in `app.js`.  You'll note that require `routes/index.js` and declare that we'll use whatever's there when users make requests at the `'/'` endpoint (i.e. the root of the site we're building).  To see what's currently going on in more detail, let's open up `/routes/index.js` in the left pane on Atom and `/views/index.ejs` in the right pane.  In `index.js` we find the following:
+    ```
+    router.get('/', function(req, res, next) {
+      res.render('index', { title: 'Express' });
+    });
+    ```
+    Here we're saying that when a user makes a [get request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) we are going to render a template called `'index'`, and we're going to pass in a javascript object full of data we want the template to render somehow.  In this case we're just sending in a title for the page, but we could be sending in urls of images, user data, giant arrays of information from our database, etc. etc.  To test this out, change the value of `title` to `'Simple Slack App'` and reload [localhost:3000](http://localhost:3000).
+
 ## Handling Post requests
+
+## Starting a Slack App
+
+## Creating a Slash Command
+
+## Using the Web api
