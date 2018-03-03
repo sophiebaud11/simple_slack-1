@@ -138,6 +138,8 @@ To start out, let’s add a basic html page to our public folder and get it conn
     });
     ```
     Here we're saying that when a user makes a [get request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) we are going to render a template called `'index'`, and we're going to pass in a javascript object full of data we want the template to render somehow.  In this case we're just sending in a title for the page, but we could be sending in urls of images, user data, giant arrays of information from our database, etc. etc.  To test this out, change the value of `title` to `'Simple Slack App'` and reload [localhost:3000](http://localhost:3000).
+2. Now, over in `views/index.ejs` you can see where the `title` value is being sent.  In line 4, we find `<title><%= title %></title>`, in line 8 we find `<h1><%= title %></h1>`, and in line 9 we find `<p>Welcome to <%= title %></p>`.  In each of these three cases, the string 'Simple Slack App' is being passed in and rendered, just as if you would have typed `<title>Simple Slack App</title>`, etc.  The strange `<%= %>` tags are what we need to use to access the `title`, and instead of having to type `data.title` or some such, as you might expect, we get to just use the properties of the object we pass in (from `index.js`) as variables (in `index.ejs`).  We'll also be able to add plain old js (loops, conditionals, etc.) to the `.ejs` files using `<% %>` instead of `<%= %>`, but let's not worry about that yet.
+To make sure you're grasping how this works, add another property/key along with another value, perhaps `subtitle: 'My First App'` or something like that. Then, over in the `index.ejs` file, do something with it, like maybe `<h2><%= subtitle %>`.
 
 ## Handling Post requests
 
