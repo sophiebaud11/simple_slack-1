@@ -1,0 +1,9 @@
+body {
+	background-color: rgba(20,20,20,0.7);
+	color: white;
+  font-family: sans-serif;
+}
+h2 {
+	font-family: Futura;
+	text-transform: uppercase;
+}
