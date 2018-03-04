@@ -129,6 +129,12 @@ To start out, let’s add a basic html page to our public folder and get it conn
 
 ## JS on the client side
 
+As we build this web app, we are actually splitting our computers in two, with one half functioning as a **server** that "serves" up data to send it over to the other half of our machine, which is functioning as the **client**.  As we move through this tutorial you'll get a sense of what sorts of things happen on the "server side" and what sorts of things happen on the "client side".  
+
+We're going to be running
+
+1.
+
 ## Creating routes and views
 
 
@@ -186,9 +192,26 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 
 ## Enable Interactive Components
 1. Start by clicking "Interactive Components"
-2. You'll need to paste in a URL for the API endpoint you are going to build in your simple-slack app.  So copy your Heroku URL
+2. You'll need to paste in a URL for the API endpoint you are going to build in your simple-slack app.  So copy your Heroku URL and paste it in, and then add a slash and a name you'll remember. Something like `https://rocky-earth-53316.herokuapp.com/slack-interactions`  
+3. That `/slack-interactions` is a route you are going to have to build.  So open up the `index.js` file in your `routes` folder and start with the following code:
+    ```
+    router.post('/slack-interactions', function(req, res, next) {
+      console.log(JSON.stringify(req.body, null, 4))
+      res.send('got your message'});
+    });
+    ```
+    As usual, don't just paste but try to make sure you get what each part of this code is doing.
+
+4. handle?
+
 
 
 ## Creating a Slash Command
+
+1. Once you click on "Slash Commands" in the left-hand sidebar, you'll see a "Create New Command" button, which you should click.
+2. Now you need to make some choices.
+    1. You'll need to give your command a name, well just use `/simple` for now
+    2. for the request URL, you'll need to paste in your Heroku URL and then add on a route.  We'll use `/simple-slash`.  Once you do this you may be prompted to reinstall your app, and you can go ahead and do this.
+
 
 ## Using the Web api
