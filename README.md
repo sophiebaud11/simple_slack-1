@@ -159,6 +159,7 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     ```
     And that should be it (unless you have some environment variables, like a MongoDB url, say, in which case you can check out how we solve this problem with our secret Slack credentials below).
 6. We are assuming that you are all set up with git, and used to the `git add .` + `git commit -m "message"` + `git push origin master` process you've probably repeated a bunch by now.  We're now going to add an additional command to this refrain: `git push heroku master`, which will push the repository up to Heroku.
+7. Now if you enter `heroku open` you should see your default browser open up your Heroku site.  Make a note of the URL--or, even better, slack it out to the team to celebrate!  You'll need that URL, because you'll be pointing your Slack commands at it in a bit.
 
 
 ## Starting a Slack App
@@ -175,7 +176,7 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     1. Install `dotenv` by typing `npm i -S dotenv` into the Terminal (while in your app's root folder of course)
     2. Add the following line near the top of your `app.js` file:  `require('dotenv').config();`
     3. To check if this is working, try adding `console.log(process.env.SLACK_WEBHOOK)` to `app.js` and seeing if it logs the right thing out.  This is happening **on the server side**, so your users won't see it (which they WOULD if you were logging it in **their** web-browser consoles)
-10. CHANGE NOW: You may already be wondering whether or not that `.env` file with all of its special variables has made its way up to Heroku on `git push heroku master`, given that you've already told git **not** to include any files starting with `.` –– this is a good thing to worry about.  He have to tell Heroku about our environment variables by typing the following: 
+10. CHANGE NOW: You may already be wondering whether or not that `.env` file with all of its special variables has made its way up to Heroku on `git push heroku master`, given that you've already told git **not** to include any files starting with `.` –– this is a good thing to worry about.  He have to tell Heroku about our environment variables by typing the following:
     ```
     heroku config:set SLACK_WEBHOOK=
     ```
