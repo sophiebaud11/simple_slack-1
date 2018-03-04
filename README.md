@@ -144,9 +144,25 @@ We're going to be running
       res.render('index', { title: 'Express' });
     });
     ```
-    Here we're saying that when a user makes a [get request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) we are going to render a template called `'index'`, and we're going to pass in a javascript object full of data we want the template to render somehow.  In this case we're just sending in a title for the page, but we could be sending in urls of images, user data, giant arrays of information from our database, etc. etc.  To test this out, change the value of `title` to `'Simple Slack App'` and reload [localhost:3000](http://localhost:3000).
-2. Now, over in `views/index.ejs` you can see where the `title` value is being sent.  In line 4, we find `<title><%= title %></title>`, in line 8 we find `<h1><%= title %></h1>`, and in line 9 we find `<p>Welcome to <%= title %></p>`.  In each of these three cases, the string 'Simple Slack App' is being passed in and rendered, just as if you would have typed `<title>Simple Slack App</title>`, etc.  The strange `<%= %>` tags are what we need to use to access the `title`, and instead of having to type `data.title` or some such, as you might expect, we get to just use the properties of the object we pass in (from `index.js`) as variables (in `index.ejs`).  We'll also be able to add plain old js (loops, conditionals, etc.) to the `.ejs` files using `<% %>` instead of `<%= %>`, but let's not worry about that yet. To make sure you're grasping how this works, add another property/key along with another value, perhaps `subtitle: 'My First App'` or something like that. Then, over in the `index.ejs` file, do something with it, like maybe `<h2><%= subtitle %>`.
-3.
+    Here we're saying that when a user makes a [get request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) we are going to render a template called `'index'`, and we're going to pass in a javascript object full of data we want the template to render somehow.  In this case we're just sending in a title for the page, but we could be sending in urls of images, user data, giant arrays of information from our database, etc. etc.  To test this out, change the value of `title` to `'Simple Slack App'`, quit the server by entering control+C in the terminal, restarting the server by entering `npm start`, and then reloading [localhost:3000](http://localhost:3000).
+2. It is a pain to have to restart the server every time you change the server-side code, so we're going to run our app with a utility called `nodemon` that automatically restarts the server every time we change something.  To do this:
+    1. enter `npm install -S nodemon` to install it and add it to your dependencies
+    2. open up your `package.json` file and add a new script called `devstart` in the scripts section with the value `nodemon ./bin/www`.  When your done, your scripts section should look like this:
+        ```
+        "scripts": {
+          "start": "node ./bin/www",
+          "devstart": "nodemon ./bin/www"
+        },
+        ```
+    3. now when you want to start the app, instead of typing `npm start` we'll type `npm run devstart`. Do this and you should be able to open up [localhost:3000](http://localhost:3000) again. Try changing something in your index route to see if the change is working.
+3. Now, over in `views/index.ejs` you can see where the `title` value is being sent.  In line 4, we find `<title><%= title %></title>`, in line 8 we find `<h1><%= title %></h1>`, and in line 9 we find `<p>Welcome to <%= title %></p>`.  In each of these three cases, the string 'Simple Slack App' is being passed in and rendered, just as if you would have typed `<title>Simple Slack App</title>`, etc.  The strange `<%= %>` tags are what we need to use to access the `title`, and instead of having to type `data.title` or some such, as you might expect, we get to just use the properties of the object we pass in (from `index.js`) as variables (in `index.ejs`).  We'll also be able to add plain old js (loops, conditionals, etc.) to the `.ejs` files using `<% %>` instead of `<%= %>`, but let's not worry about that yet. To make sure you're grasping how this works, add another property/key along with another value, perhaps `subtitle: 'My First App'` or something like that. Then, over in the `index.ejs` file, do something with it, like maybe `<h2><%= subtitle %>`.
+4. So let's now create a new route in the `index.js` file. Copy and paste in the following code:
+    ```
+    router.get('/slack-history', function(req, res, next){
+      res.send('Slack History will go here.')
+      })
+    ```
+    You should
 
 ## Handling Post requests
 
@@ -228,3 +244,5 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 
 
 ## Using the Web api
+
+    console.log("test)
