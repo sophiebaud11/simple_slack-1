@@ -144,21 +144,48 @@ To start out, let’s add a basic html page to our public folder and get it conn
 
 ## Handling Post requests
 
+## Deploying with Heroku CLI
+Things are way easier if we have this app running out on the internets rather than on your machine when we head on to the next steps, so in this step we're going to learn how to deploy this app using [Heroku](https://www.heroku.com/).
+
+Heroku already has [an amazing tutorial for developers wanting to deploy node.js apps](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction), so check that out if you have time.  Here we'll try to be even briefer, and to really focus on the bare minimum you need to know for this tutorial.
+
+1. Head to [Heroku](https://www.heroku.com/) and sign up for an account if you don't have one already.
+2. Download and install the Heroku CLI [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
+3. In your Terminal, enter `heroku login` and log in with your Heroku user name and password.
+4. Now, again in the Terminal, and again making sure that you are in the root folder of your app, enter `heroku create`.
+5. To get the app to run properly, we need to let Heroku know how to start, and to do this, we create a file at the root of the app named `Procfile` (no extension needed), and inside it we'll paste the following code:
+    ```
+    web: node ./bin/www
+    ```
+    And that should be it (unless you have some environment variables, like a MongoDB url, say, in which case you can check out how we solve this problem with our secret Slack credentials below).
+6. We are assuming that you are all set up with git, and used to the `git add .` + `git commit -m "message"` + `git push origin master` process you've probably repeated a bunch by now.  We're now going to add an additional command to this refrain: `git push heroku master`, which will push the repository up to Heroku.
+
+
 ## Starting a Slack App
 
 1. create a new slack team for yourself
 2. maybe create a couple of different users so that you can test out privacy-related settings, etc.
 3. head to [api.slack.com/apps](https://api.slack.com/apps), where you should be able to see a big "create Slack App" button. Click it and call your app whatever you like.  We'll call ours `simple-slack`. ![slack-app-name-screenshot](https://raw.githubusercontent.com/learninglab-dev/simple_slack/master/public/images/name-slack-app.png).
-4. next up, we're going to do a bunch of stuff in the "add features and functionality" section. ![add-features-and-functionality](https://raw.githubusercontent.com/learninglab-dev/simple_slack/master/public/images/add-features-and-functionality.png).  Start by clicking "Incoming Webooks".  Toggle the on/off switch to "on".
+4. next up, we're going to do a bunch of stuff in the "add features and functionality" section. Start by clicking "Incoming Webooks".  Toggle the on/off switch to "on".
 5. Towards the bottom of the page, you'll find an "Add New Webhook to Workspace" button. You'll then be prompted to approve this webhook for posting to a specific channel, and once you do this, you'll be able to copy the slack webhook URL.  
 6. To test if it's working, you can copy and paste the "Sample curl request" that gets generated for you and paste it into your Terminal.  This command should send a message to your chosen Slack channel.
 7. This webhook URL, and all the other secret keys and tokens you get from Slack, Mongo, etc, should be kept secret, and this means keeping them off of github.  So don't just add these to app.js.  Instead, create a file named `.env` in the root folder and save your tokens and keys there.  In this case, it should have the following format: `SLACK_WEBHOOK=https://hooks.slack.com/services/ABCDE1234/XXXXXXXXXetc`.
-8. If you click "Basic Information" at the top of the lefthand sidebar, you'll find three other secret strings you'll want to save securely.  You can call them `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, and `SLACK_VERIFICATION_TOKEN` as add them to your `.env` file.
+8. If you click "Basic Information" at the top of the lefthand sidebar, you'll find three other secret strings you'll want to save securely.  You can call them `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, and `SLACK_VERIFICATION_TOKEN` as you add them to your `.env` file.
 9. If you're wondering how to access these variables from within your app, all you have to do is
     1. Install `dotenv` by typing `npm i -S dotenv` into the Terminal (while in your app's root folder of course)
     2. Add the following line near the top of your `app.js` file:  `require('dotenv').config();`
     3. To check if this is working, try adding `console.log(process.env.SLACK_WEBHOOK)` to `app.js` and seeing if it logs the right thing out.  This is happening **on the server side**, so your users won't see it (which they WOULD if you were logging it in **their** web-browser consoles)
-10.
+10. CHANGE NOW: You may already be wondering whether or not that `.env` file with all of its special variables has made its way up to Heroku on `git push heroku master`, given that you've already told git **not** to include any files starting with `.` –– this is a good thing to worry about.  He have to tell Heroku about our environment variables by typing the following: 
+    ```
+    heroku config:set SLACK_WEBHOOK=
+    ```
+    After that, you shouldn't need to mess with them again unless their values change.
+
+11.  Now we're going to zip through a bunch of the settings we can access through the links in the "Features" section of the left sidebar.  
+
+## Enable Interactive Components
+1. Start by clicking "Interactive Components"
+2. You'll need to paste in a URL for the API endpoint you are going to build in your simple-slack app.  So copy your Heroku URL
 
 
 ## Creating a Slash Command
