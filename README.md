@@ -197,7 +197,7 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     ```
     router.post('/slack-interactions', function(req, res, next) {
       console.log(JSON.stringify(req.body, null, 4))
-      res.send('got your message'});
+      res.send('got your message');
     });
     ```
     As usual, don't just paste but try to make sure you get what each part of this code is doing.
@@ -213,5 +213,9 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     1. You'll need to give your command a name, well just use `/simple` for now
     2. for the request URL, you'll need to paste in your Heroku URL and then add on a route.  We'll use `/simple-slash`.  Once you do this you may be prompted to reinstall your app, and you can go ahead and do this.
 
+## Event Subscriptions
+
+1. enable them
+2. URL: `https://rocky-earth-53316.herokuapp.com/slack-events`
 
 ## Using the Web api
