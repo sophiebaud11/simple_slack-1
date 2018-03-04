@@ -213,9 +213,18 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     1. You'll need to give your command a name, well just use `/simple` for now
     2. for the request URL, you'll need to paste in your Heroku URL and then add on a route.  We'll use `/simple-slash`.  Once you do this you may be prompted to reinstall your app, and you can go ahead and do this.
 
+## OAUTH and Permissions
+
+1. add channel history
+2. add reaction history
+
+
 ## Event Subscriptions
 
 1. enable them
 2. URL: `https://rocky-earth-53316.herokuapp.com/slack-events`
+3. select a bunch
+
+
 
 ## Using the Web api
