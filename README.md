@@ -1,8 +1,8 @@
 # SIMPLE EXPRESS & SLACK APP TUTORIAL
 
-[Express](https://expressjs.com/) is a ‘minimalist’ framework for [node.js](https://nodejs.org/en/about/) applications. It will offer us a fast, relatively simple way to get started building a web application, which in this case will also involve hooks into our Slack team, making it possible to build slash commands and other useful stuff.
+[Express](https://expressjs.com/) is a ‘minimalist’ framework for [node.js](https://nodejs.org/en/about/) applications. It will offer us a fast, relatively simple way to get started building a web application, which in this case will also involve hooks into our Slack team.
 
-This tutorial is really going to build from the ground up, presuming no knowledge of anything (though in some cases we'll link out to more detailed and comprehensive intros to what's covered here--this is going to teach you the bare minimum required to get this app up and running).  Key tools covered inlude:
+This tutorial is really going to build from the ground up, presuming no knowledge of anything.  In some cases we'll link out to more detailed and comprehensive intros to what's covered here--but this page is going to teach you the bare minimum required to get this app up and running as efficiently as possible.  Key tools covered include:
 
 - javascript
 - node.js
@@ -142,7 +142,7 @@ We're going to be running lots of js code on the server side, but we will also b
 ## Creating routes and views
 
 
-1. Take a look at lines 10 & 27 in `app.js`.  You'll note that require `routes/index.js` and declare that we'll use whatever's there when users make requests at the `'/'` endpoint (i.e. the root of the site we're building).  To see what's currently going on in more detail, let's open up `/routes/index.js` in the left pane on Atom and `/views/index.ejs` in the right pane.  In `index.js` we find the following:
+1. Take a look at lines 10 & 27 in `app.js`.  You'll note that they require `routes/index.js` and declare that we'll use whatever's there when users make requests at the `'/'` endpoint (i.e. the root of the site we're building).  To see what's currently going on in more detail, let's open up `/routes/index.js` in the left pane on Atom and `/views/index.ejs` in the right pane.  In `index.js` we find the following:
     ```
     router.get('/', function(req, res, next) {
       res.render('index', { title: 'Express' });
@@ -208,15 +208,16 @@ We're going to be running lots of js code on the server side, but we will also b
     ```
 7. To take advantage of all the data you send to the ejs template, you'll need to handle it over there with a loop.  It will be similar in every respect to a basic js loop, but we'll need to use those `<%  %>` tags to set it off from the HTML.  Try adding in the following if you copied and pasted the array above, or edit this code appropriately if you brought in different data.
     ```
-    <ul>
+    <ol>
       <% for(i=0; i<data.length; i++){ %>
         <li>
           The population of <%= data[i].city %> is  <%= data[i].population %>.
         </li>
       <%  } %>
-    </ul>
+    </ol>
     ```
-
+    Here we start up an ordered list, then **inside the <ol> tags** we write a loop in js that loops through the data array.  Then, inside `li` tags, we create a sentence for each element `data[i]`, calling its `.city` and `.population` properties.
+8.
 ## Handling Post requests
 
 ## Deploying with Heroku CLI
