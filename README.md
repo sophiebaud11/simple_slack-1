@@ -131,9 +131,13 @@ To start out, let’s add a basic html page to our public folder and get it conn
 
 As we build this web app, we are actually splitting our computers in two, with one half functioning as a **server** that "serves" up data to send it over to the other half of our machine, which is functioning as the **client**.  As we move through this tutorial you'll get a sense of what sorts of things happen on the "server side" and what sorts of things happen on the "client side".  
 
-We're going to be running
+We're going to be running lots of js code on the server side, but we will also be writing scripts that will run on the client side too, in our users' web browsers.  This section gives you a quick taste of how and why you'd do that.
 
-1.
+1. At the bottom of your `index.html` doc, just before the closing `</body>` tag, type the following:
+    ```
+    <script>
+    </script>
+    ```
 
 ## Creating routes and views
 
@@ -155,14 +159,30 @@ We're going to be running
         },
         ```
     3. now when you want to start the app, instead of typing `npm start` we'll type `npm run devstart`. Do this and you should be able to open up [localhost:3000](http://localhost:3000) again. Try changing something in your index route to see if the change is working.
-3. Now, over in `views/index.ejs` you can see where the `title` value is being sent.  In line 4, we find `<title><%= title %></title>`, in line 8 we find `<h1><%= title %></h1>`, and in line 9 we find `<p>Welcome to <%= title %></p>`.  In each of these three cases, the string 'Simple Slack App' is being passed in and rendered, just as if you would have typed `<title>Simple Slack App</title>`, etc.  The strange `<%= %>` tags are what we need to use to access the `title`, and instead of having to type `data.title` or some such, as you might expect, we get to just use the properties of the object we pass in (from `index.js`) as variables (in `index.ejs`).  We'll also be able to add plain old js (loops, conditionals, etc.) to the `.ejs` files using `<% %>` instead of `<%= %>`, but let's not worry about that yet. To make sure you're grasping how this works, add another property/key along with another value, perhaps `subtitle: 'My First App'` or something like that. Then, over in the `index.ejs` file, do something with it, like maybe `<h2><%= subtitle %>`.
+3. Now, over in `views/index.ejs` you can see where the `title` value is being sent.  In line 4, we find `<title><%= title %></title>`, in line 8 we find `<h1><%= title %></h1>`, and in line 9 we find `<p>Welcome to <%= title %></p>`.  In each of these three cases, the string 'Simple Slack App' is being passed in and rendered, just as if you would have typed `<title>Simple Slack App</title>` into a regular HTML file.  The strange `<%= %>` tags are what we need to use to access the `title`, and instead of having to type `data.title` or some such, as you might expect, we get to just use the properties of the object we pass in (from `index.js`) as variables (in `index.ejs`).  We'll also be able to add plain old js (loops, conditionals, etc.) to the `.ejs` files using `<% %>` instead of `<%= %>`, but let's not worry about that yet. To make sure you're grasping how this works, add another property/key along with another value, perhaps `subtitle: 'My First App'` or something like that. Then, over in the `index.ejs` file, do something with it, like maybe `<h2><%= subtitle %>`.
 4. So let's now create a new route in the `index.js` file. Copy and paste in the following code:
     ```
     router.get('/slack-history', function(req, res, next){
       res.send('Slack History will go here.')
       })
     ```
-    You should
+    This listens for people to make requests to the `/slack-history` route, and in response the server will send back a simple text message.  This may not seem useful, but believe it or not this is more or less exactly what we'll need to do later on to register our URL with our Slack App.
+5. If you want to do something more interesting than sending simple text back, try the following:
+    1. create a duplicate of the `index.ejs` file in `/views` that you call `slack_history.ejs` (this is easier than starting from scratch)
+    2. change the block of code above by swapping out the `res.send` line for the following:
+        ```
+        router.get('/slack-history', function(req, res, next){
+          var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything."
+          res.render('slack_history', {title: "Slack History", message: message})
+          })
+        ```
+    3. now let's make use of the extra value we're passing in.  Over in `slack_history.ejs`, add in a paragraph for the  `message` by adding the following code:
+        ```
+        <p>  
+            <%= message %>
+        </p>
+        ```
+6. To really take things to the next level, let's pass in a larger array of data and then handle that over in the ejs.  Add in the following array (or a similar array) as a variable in your `router.get(/slack-history, . . . )` route
 
 ## Handling Post requests
 
