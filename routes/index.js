@@ -20,6 +20,11 @@ router.post('/slack-slash', function(req, res, next) {
   res.send('got your message');
 });
 
+router.post('/simple-slack-slash', function(req, res, next) {
+  console.log(JSON.stringify(req.body, null, 4))
+  res.send('just received a message from user ' + req.body.event.user + "We'll figure out who you are when we get a grasp of the rest of the API.");
+});
+
 router.post('/slack-events', function(req, res, next) {
   console.log(JSON.stringify(req.body, null, 4))
   res.send(req.body.challenge);

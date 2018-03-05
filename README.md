@@ -283,6 +283,10 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 2. Now you need to make some choices.
     1. You'll need to give your command a name, well just use `/simple` for now
     2. for the request URL, you'll need to paste in your Heroku URL and then add on a route.  We'll use `/simple-slash`.  Once you do this you may be prompted to reinstall your app, and you can go ahead and do this.
+3. Once Slack is pointed at your `/simple-slash` endpoint, you need to create a route (and make sure that it's running on Heroku, not just on your `localhost:3000`, because Slack can't see `localhost:3000`).  So go ahead and add a `POST` route to your `routes/index.js` file:
+    ```
+		
+		```
 
 ## OAUTH and Permissions
 
@@ -296,6 +300,10 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 2. URL: `https://rocky-earth-53316.herokuapp.com/slack-events`
 3. select a bunch
 
+## Add a Bot user
+
+1. Click Bot users
+2. Add Bot User (simpleslack)
 
 
 ## Using the Web api
