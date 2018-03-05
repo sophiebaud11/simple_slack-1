@@ -10,5 +10,12 @@
     <p>
         <%= message %>
     </p>
+    <ul>
+      <% for(i=0; i<data.length; i++){ %>
+        <li>
+          The population of <%= data[i].city %> is  <%= data[i].population %>.
+        </li>
+      <%  } %>
+    </ul>
   </body>
 </html>

@@ -26,8 +26,25 @@ router.post('/slack-events', function(req, res, next) {
 });
 
 router.get('/slack-history', function(req, res, next){
-  var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything."
-  res.render('slack_history', {title: "Slack History", message: message})
+  var sampleData = [
+     {
+         "city": "New York",
+         "population": "8405837",
+         "state": "New York"
+     },
+     {
+         "city": "Los Angeles",
+         "population": "3884307",
+         "state": "California"
+     },
+     {
+         "city": "Chicago",
+         "population": "2718782",
+         "state": "Illinois"
+     }
+  ];
+  var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything.";
+  res.render('slack_history', {title: "Slack History", message: message, data: sampleData})
   })
 
 

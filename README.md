@@ -182,7 +182,40 @@ We're going to be running lots of js code on the server side, but we will also b
             <%= message %>
         </p>
         ```
-6. To really take things to the next level, let's pass in a larger array of data and then handle that over in the ejs.  Add in the following array (or a similar array) as a variable in your `router.get(/slack-history, . . . )` route
+6. To really take things to the next level, let's pass in a larger array of data and then handle that over in the ejs.  Add in the following array (or a similar array) as a variable in your `router.get(/slack-history, . . . )` route:
+    ```
+    var sampleData = [
+       {
+           "city": "New York",
+           "population": "8405837",
+           "state": "New York"
+       },
+       {
+           "city": "Los Angeles",
+           "population": "3884307",
+           "state": "California"
+       },
+       {
+           "city": "Chicago",
+           "population": "2718782",
+           "state": "Illinois"
+       }
+    ]
+    ```
+    You can find a much larger and more interesting array [here](https://gist.github.com/Miserlou/c5cd8364bf9b2420bb29) if you want to go above and beyond. Once you have some data stored in a variable, go ahead and pass that on to the ejs template, the object you send should now look something like this:
+    ```
+    {title: "Slack History", message: message, data: sampleData}
+    ```
+7. To take advantage of all the data you send to the ejs template, you'll need to handle it over there with a loop.  It will be similar in every respect to a basic js loop, but we'll need to use those `<%  %>` tags to set it off from the HTML.  Try adding in the following if you copied and pasted the array above, or edit this code appropriately if you brought in different data.
+    ```
+    <ul>
+      <% for(i=0; i<data.length; i++){ %>
+        <li>
+          The population of <%= data[i].city %> is  <%= data[i].population %>.
+        </li>
+      <%  } %>
+    </ul>
+    ```
 
 ## Handling Post requests
 
