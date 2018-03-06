@@ -293,7 +293,19 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     After this, you should be able to the `git add .`, `git commit -m "message"`, `git push heroku master` dance to get things running on the Heroku server, and after that your slash command should be live.  Type `/simple test` into Slack and you should see some sort of result, both on the client side (in Slack), and on the server side, where you are logging out stringified JSON of the `req.body`.  Don't forget that you need to be checking your Heroku logs with `heroku logs --tail` rather than checking the terminal you typed `npm run devstart` in.
 4. The next thing to do is to poke around in the req.body to get a sense of what's there.  Here's a sample of what you might find:
     ```
-
+    {
+      "token": "XXXXXXXXXXXXXXXXXXXXX
+      "team_id": "12345ABC",
+      "team_domain": "learninglab-dev-mk",
+      "channel_id": "67890DEF",
+      "channel_name": "general",
+      "user_id": "12345GHI",
+      "user_name": "john.smith",
+      "command": "/simple",
+      "text": "test from general",
+      "response_url": "https://hooks.slack.com/commands/etc",
+      "trigger_id": "1234123413ltkg1l3k4l234etc"
+    }
     ```
 5. _structuring payloads_
 6. _interactive messages_
