@@ -141,8 +141,6 @@ We're going to be running lots of js code on the server side, but we will also b
     ```
 
 ## Creating routes and views
-
-
 1. Take a look at lines 10 & 27 in `app.js`.  You'll note that they require `routes/index.js` and declare that we'll use whatever's there when users make requests at the `'/'` endpoint (i.e. the root of the site we're building).  To see what's currently going on in more detail, let's open up `/routes/index.js` in the left pane on Atom and `/views/index.ejs` in the right pane.  In `index.js` we find the following:
     ```
     router.get('/', function(req, res, next) {
@@ -219,6 +217,7 @@ We're going to be running lots of js code on the server side, but we will also b
     ```
     Here we start up an ordered list, then **inside the <ol> tags** we write a loop in js that loops through the data array.  Then, inside `li` tags, we create a sentence for each element `data[i]`, calling its `.city` and `.population` properties.
 8.
+
 ## Handling Post requests
 
 ## Deploying with Heroku CLI
@@ -292,7 +291,10 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     })
     ```
     After this, you should be able to the `git add .`, `git commit -m "message"`, `git push heroku master` dance to get things running on the Heroku server, and after that your slash command should be live.  Type `/simple test` into Slack and you should see some sort of result, both on the client side (in Slack), and on the server side, where you are logging out stringified JSON of the `req.body`.  Don't forget that you need to be checking your Heroku logs with `heroku logs --tail` rather than checking the terminal you typed `npm run devstart` in.
-4. _getting info from req.body_
+4. The next thing to do is to poke around in the req.body to get a sense of what's there.  Here's a sample of what you might find:
+    ```
+
+    ```
 5. _structuring payloads_
 6. _interactive messages_
 7. _message permanence_
