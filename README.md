@@ -308,7 +308,8 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     ```
     res.json(thePayload);
     ```
-6. _interactive messages_
+    If you restart the app (by committing and pushing to heroku) you should see the results when you type the slash command into Slack.  
+6. There are many more things you can add to the messages, including color options, footers, timestamps, etc.  We are going to concentrate on adding buttons, because they'll allow our users to communicate with our app.  To start,   _interactive messages_
 7. _message permanence_
 
 ## OAUTH and Permissions

@@ -24,10 +24,6 @@ router.post('/simple-slack-slash', function(req, res, next) {
   console.log("got a request");
   console.log(JSON.stringify(req.body, null, 4));
   if (req.body.user_name) {
-    console.log(colors.rainbow('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'));
-    console.log(colors.rainbow('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'));
-    console.log(colors.rainbow('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'));
-    console.log(JSON.stringify(req.body, null, 4));
     var theText = 'just received a message from user ' + req.body.user_name + ": \n" + req.body.text + ".\n\n We'll do more interesting stuff in a bit."
     var thePayload = {
       text: (theText),
@@ -35,6 +31,27 @@ router.post('/simple-slack-slash', function(req, res, next) {
         [{
           title: "LL gif",
           "image_url": "http://codelab.learninglab.xyz/gifs/mk_artifact.gif"
+        },
+        {
+            "fallback": "Would you recommend it to customers?",
+            "title": "Would you recommend it to customers?",
+            "callback_id": "comic_1234_xyz",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "actions": [
+                {
+                    "name": "recommend",
+                    "text": "Recommend",
+                    "type": "button",
+                    "value": "recommend"
+                },
+                {
+                    "name": "no",
+                    "text": "No",
+                    "type": "button",
+                    "value": "bad"
+                }
+            ]
         }]
       }
     console.log(JSON.stringify(thePayload, null, 4));
