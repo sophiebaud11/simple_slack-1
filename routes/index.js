@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
 router.post('/slack-interactions', function(req, res, next) {
   console.log("just got a post to interactions");
   console.log(JSON.stringify(req.body, null, 4));
-  var text = 'got it ' + req.body.user.name;
+  var theResponse = JSON.parse(req.body);
+  console.log(JSON.stringify(theResponse, null, 4));
   res.send('got your message');
 });
 
