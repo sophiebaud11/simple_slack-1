@@ -26,16 +26,16 @@ router.post('/simple-slack-slash', function(req, res, next) {
   if (req.body.user_name) {
     var theText = 'just received a message from user ' + req.body.user_name + ": \n" + req.body.text + ".\n\n We'll do more interesting stuff in a bit."
     var thePayload = {
-      "text": theText,
-      "attachments":
+      text: theText,
+      attachments:
         [{
-          "title": "LL gif",
+          title: "LL gif",
           "image_url": "http://codelab.learninglab.xyz/gifs/mk_artifact.gif"
         }]
       }
     console.log(JSON.stringify(thePayload, null, 4));
     // res.send(JSON.stringify(thePayload));
-    res.status(200).json(thePayload);
+    res.json(thePayload);
 
   }
   else {
