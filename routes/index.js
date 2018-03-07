@@ -8,14 +8,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/slack-interactions', function(req, res, next) {
-  console.log(JSON.stringify(req.body, null, 4))
+  console.log("just got a post to interactions");
+  console.log(JSON.stringify(req.body, null, 4));
+  var text = 'got it ' + req.body.user.name;
   res.send('got your message');
 });
 
 router.post('/slack-slash', function(req, res, next) {
   console.log(JSON.stringify(req.body, null, 4))
   res.send('got your message');
-  next();
 });
 
 router.post('/simple-slack-slash', function(req, res, next) {
@@ -31,7 +32,7 @@ router.post('/simple-slack-slash', function(req, res, next) {
       attachments:
         [{
           title: "just a simple gif",
-          image_url: "https://gph.is/1GrHtOZ"
+          image_url: "https://media.giphy.com/media/5hHOBKJ8lw9OM/giphy.gif"
         },
         {
             "fallback": "Would you recommend it to customers?",
