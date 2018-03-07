@@ -292,7 +292,22 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     ```
     After this, you should be able to the `git add .`, `git commit -m "message"`, `git push heroku master` dance to get things running on the Heroku server, and after that your slash command should be live.  Type `/simple test` into Slack and you should see some sort of result, both on the client side (in Slack), and on the server side, where you are logging out stringified JSON of the `req.body`.  Don't forget that you need to be checking your Heroku logs with `heroku logs --tail` rather than checking the terminal you typed `npm run devstart` in.
 4. The next thing to do is to poke around in the req.body to get a sense of what's there. You'll note that the slash command itself is `req.body.command`, the user is there as both a `req.body.user_name` and a `req.body.user_id`, and that the text is `req.body.text`.  These are the key values we'll use to develop our response.  For starters, why not personalize the reponse by trying to say something to `req.body.user_name` in particular?
-5. You can send back more than simple text, however. If you
+5. You can send back more than simple text, however. If you want to take advantage of more than the simple message text, you can send back a JSON payload.  To get started on this, let's define a `var thePayload` and assign it some properties:
+    ```
+    var thePayload = {
+      text: "received your message",
+      attachments: [
+        {
+          title: "just a simple gif",
+          image_url: "https://gph.is/1GrHtOZ"
+        }
+      ]
+    }
+    ```
+    And now that you've defined it, send it to slack:
+    ```
+    res.json(thePayload);
+    ```
 6. _interactive messages_
 7. _message permanence_
 
