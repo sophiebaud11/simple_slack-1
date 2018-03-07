@@ -29,8 +29,8 @@ router.post('/simple-slack-slash', function(req, res, next) {
       text: (theText),
       attachments:
         [{
-          title: "LL gif",
-          "image_url": "http://codelab.learninglab.xyz/gifs/mk_artifact.gif"
+          title: "just a simple gif",
+          image_url: "https://gph.is/1GrHtOZ"
         },
         {
             "fallback": "Would you recommend it to customers?",
