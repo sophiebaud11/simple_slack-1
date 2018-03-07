@@ -12,7 +12,11 @@ router.post('/slack-interactions', function(req, res, next) {
   console.log(JSON.stringify(req.body, null, 4));
   var theResponse = JSON.parse(req.body.payload);
   console.log(JSON.stringify(theResponse, null, 4));
-  res.send('got your message');
+  var thePayload = {
+    text: "got your message",
+    replace_original: false
+  }
+  res.json(thePayload);
 });
 
 router.post('/slack-slash', function(req, res, next) {
