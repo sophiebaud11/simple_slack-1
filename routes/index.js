@@ -24,6 +24,10 @@ router.post('/simple-slack-slash', function(req, res, next) {
   console.log("got a request");
   console.log(JSON.stringify(req.body, null, 4));
   if (req.body.user_name) {
+    console.log(colors.rainbow('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'));
+    console.log(colors.rainbow('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'));
+    console.log(colors.rainbow('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'));
+    console.log(JSON.stringify(req.body, null, 4));
     var theText = 'just received a message from user ' + req.body.user_name + ": \n" + req.body.text + ".\n\n We'll do more interesting stuff in a bit."
     var thePayload = {
       text: (theText),
