@@ -136,9 +136,40 @@ We're going to be running lots of js code on the server side, but we will also b
 1. At the bottom of your `index.html` doc, just before the closing `</body>` tag, type the following:
     ```
     <script>
-      console.log('this is working');
+      alert('there is some js running here');
     </script>
     ```
+    You should now see an alert when you reload the page.  
+2. And we _could_ use these alerts to give us info on what our code is doing, but this would get annoying if we had to add a bunch of them.  So, instead, we are going to "log" info out to the "console."  When we use the `console.log` function in our server-side code, we'll see the output in our mac's Terminal application, right where we type `npm run devstart`.  Things are slightly different for our client-side code.  For that, we'll need to open up the Developer view in our browser by hitting command + option + "i" . . . and then making sure we've selected "console" from the menu rather than "elements" or something else.
+3. To get something to show up in the console, you'll use the `console.log` function like this:
+    ```
+    <script>
+      console.log('there is some js running here');
+    </script>
+    ```
+    If you save that and reload you should be able to see the output in your browser's console.
+4. Now that we are able to log things to the console, let's quickly learn some basic js elements. And it makes sense to start with variables, because we can't write very interesting (if any) code without them. Start with the following:
+    ```
+    <script>
+      var a = "web";
+      var b = "site";
+      var c = "24";
+      var d = "7";
+      var firstResult = a + b;
+      var secondResult = c + d;
+      var thirdResult = b + d;
+      var fourthResult = c/d;
+      var fifthResult = c + "/" + d;
+      console.log(firstResult);
+      console.log(secondResult);
+      console.log(thirdResult);
+      console.log(fourthResult);
+      console.log(fifthResult);
+    </script>
+    ```
+    Take a moment to zip through this if you haven't done much with js yet and try to get a sense of why you're seeing the output you're seeing. Note that you get a number if you perform operations with numbers (`secondResult` and `fourthResult`), but that as soon as you add strings--even a single string--to the mix, the output is a string.
+5.  
+
 
 ## Creating routes and views
 1. Take a look at lines 10 & 27 in `app.js`.  You'll note that they require `routes/index.js` and declare that we'll use whatever's there when users make requests at the `'/'` endpoint (i.e. the root of the site we're building).  To see what's currently going on in more detail, let's open up `/routes/index.js` in the left pane on Atom and `/views/index.ejs` in the right pane.  In `index.js` we find the following:

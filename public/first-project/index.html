@@ -33,8 +33,19 @@
     other elements
   </p>
   <script>
+    var a = "web";
+    var b = "site";
+    var c = 24;
+    var d = 7;
+    var e = {
+      name: "MK",
+      method: function(){
+        console.log(this.name + " is the name");
+      }
+    }
     document.querySelector('#big-box').innerHTML = "TESTING";
     console.log("we'll log info here.");
+    e.method()
   </script>
   <!-- <script type="text/javascript" src="script.js"></script> -->
 </body>
