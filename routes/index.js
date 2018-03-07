@@ -28,10 +28,10 @@ router.post('/simple-slack-slash', function(req, res, next) {
     var thePayload = {
       "text": theText,
       "attachments":
-        {
+        [{
           "title": "LL gif",
           "image_url": "http://codelab.learninglab.xyz/gifs/mk_artifact.gif"
-        }
+        }]
       }
     console.log(JSON.stringify(thePayload, null, 4));
     // res.send(JSON.stringify(thePayload));
