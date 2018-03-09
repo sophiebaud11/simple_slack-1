@@ -71,7 +71,13 @@ router.post('/simple-slack-slash', function(req, res, next) {
   }
 });
 
-router.post('/slack/events', function(req, res){
+router.post('/reallysimple-slash', function(req, res, next) {
+  console.log("got a request:");
+  console.log(JSON.stringify(req.body, null, 4));
+  res.send('just received a message. will do more soon')
+})
+
+router.post('/slack-events', function(req, res){
   res.send(req.body.challenge);
   // var newSlackEvent = new SlackEvent(req.body);
   // newSlackEvent.save(function(err){
@@ -83,7 +89,6 @@ router.post('/slack/events', function(req, res){
   // })
   // console.log(JSON.stringify(req.body));
 })
-
 
 router.get('/slack-history', function(req, res, next){
   var sampleData = [
