@@ -339,7 +339,7 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
     2. for the request URL, you'll need to paste in your Heroku URL and then add on a route.  We'll use `/simple-slash`.  Once you do this you may be prompted to reinstall your app, and you can go ahead and do this.
 3. Once Slack is pointed at your `/simple-slash` endpoint, you need to create a route (and make sure that it's running on Heroku, not just on your `localhost:3000`, because Slack can't see `localhost:3000`).  So go ahead and add a `POST` route to your `routes/index.js` file:
     ```
-    router.post('/simple-slack-slash', function(req, res, next) {
+    router.post('/simple-slash', function(req, res, next) {
       console.log("got a request:");
       console.log(JSON.stringify(req.body, null, 4));
       res.send('just received a message. will do more soon')
