@@ -4,7 +4,7 @@ var colors = require('colors/safe');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Simple Slack' });
 });
 
 router.post('/slack-interactions', function(req, res, next) {
