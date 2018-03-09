@@ -267,7 +267,12 @@ We're going to be running lots of js code on the server side, but we will also b
     Here we start up an ordered list, then **inside the `<ol>` tags** we write a loop in js that loops through the data array.  Then, inside `li` tags, we create a sentence for each element `data[i]`, calling its `.city` and `.population` properties.
 8.
 
-## Handling Post requests
+## Forms, Posts, MongoDB
+
+1. // create simple form
+2. // create route
+3. // test
+4. // 
 
 ## Deploying with Heroku CLI
 Things are way easier if we have this app running out on the internets rather than on your machine when we head on to the next steps, so in this step we're going to learn how to deploy this app using [Heroku](https://www.heroku.com/).

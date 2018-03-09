@@ -71,10 +71,19 @@ router.post('/simple-slack-slash', function(req, res, next) {
   }
 });
 
-router.post('/slack-events', function(req, res, next) {
-  console.log(JSON.stringify(req.body, null, 4))
+router.post('/slack/events', function(req, res){
   res.send(req.body.challenge);
-});
+  // var newSlackEvent = new SlackEvent(req.body);
+  // newSlackEvent.save(function(err){
+  //   if (err) {console.log("there was an error");
+  //   return next(err)}
+  //   else {
+  //     console.log("saved event to db");
+  //   }
+  // })
+  // console.log(JSON.stringify(req.body));
+})
+
 
 router.get('/slack-history', function(req, res, next){
   var sampleData = [
