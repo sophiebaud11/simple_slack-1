@@ -151,15 +151,18 @@ We're going to be running lots of js code on the server side, but we will also b
 4. Now that we are able to log things to the console, let's quickly learn some basic js elements. And it makes sense to start with variables, because we can't write very interesting (if any) code without them. Start with the following:
     ```
     <script>
+      // declare my variables
       var a = "web";
       var b = "site";
       var c = "24";
       var d = "7";
+      // perform some operations and store them in new variables
       var firstResult = a + b;
       var secondResult = c + d;
       var thirdResult = b + d;
       var fourthResult = c/d;
       var fifthResult = c + "/" + d;
+      // log out all the results
       console.log(firstResult);
       console.log(secondResult);
       console.log(thirdResult);
