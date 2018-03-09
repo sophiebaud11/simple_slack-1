@@ -94,7 +94,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
     </div>
     ```
     Reload the browser and you should see . . . nothing new.  That's because these divs don't have anything in them, so they are zero pixels high right now. To change this, paste the following into your `style.css` file.
-    
+
     ```CSS
     .small-box {
       width: 50px;
@@ -136,7 +136,7 @@ As we build this web app, we are actually splitting our computers in two, with o
 We're going to be running lots of js code on the server side, but we will also be writing scripts that will run on the client side too, in our users' web browsers.  This section gives you a quick taste of how and why you'd do that.
 
 1. At the bottom of your `index.html` doc, just before the closing `</body>` tag, type the following:
-    ```
+    ```javascript
     <script>
       alert('there is some js running here');
     </script>
@@ -144,14 +144,14 @@ We're going to be running lots of js code on the server side, but we will also b
     You should now see an alert when you reload the page.  
 2. And we _could_ use these alerts to give us info on what our code is doing, but this would get annoying if we had to add a bunch of them.  So, instead, we are going to "log" info out to the "console."  When we use the `console.log` function in our server-side code, we'll see the output in our mac's Terminal application, right where we type `npm run devstart`.  Things are slightly different for our client-side code.  For that, we'll need to open up the Developer view in our browser by hitting command + option + "i" . . . and then making sure we've selected "console" from the menu rather than "elements" or something else.
 3. To get something to show up in the console, you'll use the `console.log` function like this:
-    ```
+    ```javascript
     <script>
       console.log('there is some js running here');
     </script>
     ```
     If you save that and reload you should be able to see the output in your browser's console.
 4. Now that we are able to log things to the console, let's quickly learn some basic js elements. And it makes sense to start with variables, because we can't write very interesting (if any) code without them. Start with the following:
-    ```
+    ```javascript
     <script>
       // declare my variables
       var a = "web";
