@@ -170,7 +170,9 @@ We're going to be running lots of js code on the server side, but we will also b
       console.log(fifthResult);
     </script>
     ```
-    Take a moment to zip through this if you haven't done much with js yet and try to get a sense of why you're seeing the output you're seeing. Note that you get a number if you perform operations with numbers (`secondResult` and `fourthResult`), but that as soon as you add strings--even a single string--to the mix, the output is a string.
+    Take a moment to zip through this if you haven't done much with js yet and try to get a sense of why you're seeing the output you're seeing. Note that you get a number if you perform operations with numbers (`secondResult` and `fourthResult`), but that as soon as you add strings--even a single string--to the mix, the output is a string.  
+
+    Also note that those lines beginning with `//` don't really do anything when the code runs; they just convey information to you and other coders as you read the code itself.  These are comments, and it's usually a good idea to include them to note what the various chunks of your code are accomplishing (even once you have loads of experience coding, you can still get confused by stuff you wrote 6 months ago).
 5.  
 
 
