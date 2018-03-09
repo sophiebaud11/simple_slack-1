@@ -185,7 +185,7 @@ We're going to be running lots of js code on the server side, but we will also b
 7. _functions_ // addEventListener
 8. _conditionals_ // add additional buttons to div and do event delegation?
 9. _arrays_
-10. _objects_ 
+10. _objects_
 11. _loops_
 12. _other libraries_ // YouTube or Vimeo API? (insert player, change h1 to video title, insert marker button, display marker ts)
 
@@ -264,7 +264,7 @@ We're going to be running lots of js code on the server side, but we will also b
       <%  } %>
     </ol>
     ```
-    Here we start up an ordered list, then **inside the <ol> tags** we write a loop in js that loops through the data array.  Then, inside `li` tags, we create a sentence for each element `data[i]`, calling its `.city` and `.population` properties.
+    Here we start up an ordered list, then **inside the `<ol>` tags** we write a loop in js that loops through the data array.  Then, inside `li` tags, we create a sentence for each element `data[i]`, calling its `.city` and `.population` properties.
 8.
 
 ## Handling Post requests
