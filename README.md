@@ -2,6 +2,7 @@
 
 [Express](https://expressjs.com/) is a ‘minimalist’ framework for [node.js](https://nodejs.org/en/about/) applications. It will offer us a fast, relatively simple way to get started building a web application, which in this case will also involve hooks into our Slack team.
 
+
 This tutorial is really going to build from the ground up, presuming no knowledge of anything.  In some cases we'll link out to more detailed and comprehensive intros to what's covered here--but this page is going to teach you the bare minimum required to get this app up and running as efficiently as possible.  Key tools covered include:
 
 - javascript
@@ -272,7 +273,7 @@ We're going to be running lots of js code on the server side, but we will also b
 1. // create simple form
 2. // create route
 3. // test
-4. // 
+4. //
 
 ## Deploying with Heroku CLI
 Things are way easier if we have this app running out on the internets rather than on your machine when we head on to the next steps, so in this step we're going to learn how to deploy this app using [Heroku](https://www.heroku.com/).
