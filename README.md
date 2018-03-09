@@ -172,7 +172,7 @@ We're going to be running lots of js code on the server side, but we will also b
       console.log(fifthResult);
     </script>
     ```
-    Take a moment to zip through this if you haven't done much with js yet and try to get a sense of why you're seeing the output you're seeing. Note that you get a number if you perform operations with numbers (`secondResult` and `fourthResult`), but that as soon as you add strings--even a single string--to the mix, the output is a string.  
+    Take a moment to zip through this if you haven't done much with js yet and try to get a sense of why you're seeing the output you're seeing. Note that you get a number if you perform operations with numbers (`secondResult` and `fourthResult`), but that as soon as you add strings--even a single string--to the mix, the output is a string. For more info on the sorts of values you can store in variables, check out the [mdn reference](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics).
 
     Also note that those lines beginning with `//` don't really do anything when the code runs; they just convey information to you and other coders as you read the code itself.  These are comments, and it's usually a good idea to include them to note what the various chunks of your code are accomplishing (even once you have loads of experience coding, you can still get confused by stuff you wrote 6 months ago).
 5.  Logging to the console is a valuable technique while developing your site, but ultimately you'll want to use your code to do something to the elements on your page, and there's one key method you'll use again and again to "grab" elements of the page and manipulate them.  Paste the following chunk of code into your script:
@@ -180,8 +180,14 @@ We're going to be running lots of js code on the server side, but we will also b
     var bigBox = document.querySelector('#big-box')
     bigBox.innerHTML = "NEW TEXT HERE";
     ```
-    What we're doing here is looking through the document (i.e. your webpage) for an element with an `id` equal to `#big-box`, and we are storing that element in the variable `bigBox`.  We are then changing the `innerHTML` to be a message of our choosing.  Save this, reload your page, and you should see your new message show up in the big box.
-6.
+    What we're doing here is looking through the document (i.e. your webpage) for an element with an `id` equal to `#big-box`, and we are storing that element in the variable `bigBox`.  We are then changing the `innerHTML` of `bigBox` to be a message of our choosing.  Save this, reload your page, and you should see your new message show up in the big box.
+6. _functions_ // simple
+7. _functions_ // addEventListener
+8. _conditionals_ // add additional buttons to div and do event delegation?
+9. _arrays_
+10. _objects_ 
+11. _loops_
+12. _other libraries_ // YouTube or Vimeo API? (insert player, change h1 to video title, insert marker button, display marker ts)
 
 ## Creating routes and views
 1. Take a look at lines 10 & 27 in `app.js`.  You'll note that they require `routes/index.js` and declare that we'll use whatever's there when users make requests at the `'/'` endpoint (i.e. the root of the site we're building).  To see what's currently going on in more detail, let's open up `/routes/index.js` in the left pane on Atom and `/views/index.ejs` in the right pane.  In `index.js` we find the following:
