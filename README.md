@@ -17,7 +17,7 @@ This tutorial is really going to build from the ground up, presuming no knowledg
 
 Here are the steps for creating the blank express app template (and connecting it to [github.com](http://www.github.com)).
 
-1. create an empty repository on [github.com](http://www.github.com).  You'll need a github account for this.  As you create the repository, you'll be prompted with some settings options: you want to select "node.js" for the `.gitignore` file type, "MIT" for the license type, and you'll want to check the box for “initialize with a README.”
+1. create an empty repository on [github.com](http://www.github.com).  You'll need a github account for this.  As you create the repository, you'll be prompted with some settings options: you want to select "node.js" for the `.gitignore` file type, "MIT" for the license type, and you'll want to check the box for “initialize with a README.” ![github-repo-settings](https://raw.githubusercontent.com/learninglab-dev/simple_slack/master/public/images/github-repo-settings.png)   
 2. clone to this repository to your computer by opening up Terminal, navigating to your Development folder (`cd ~/Development` on our machines) and pasting in the `git clone [REPO_NAME]` text that you copy from the repository page. Hit enter and should be all set. ![clone-repo](https://raw.githubusercontent.com/learninglab-dev/simple_slack/master/public/images/clone-repo.png)
 3. if you now type `ls` (for "list"), you should see a folder with the same name as your repository—this is where you are going to put your app
 4. change directories into your app's root folder by typing `cd [MY_APP]`
