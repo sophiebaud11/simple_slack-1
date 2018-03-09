@@ -94,6 +94,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
     </div>
     ```
     Reload the browser and you should see . . . nothing new.  That's because these divs don't have anything in them, so they are zero pixels high right now. To change this, paste the following into your `style.css` file.
+    
     ```CSS
     .small-box {
       width: 50px;
@@ -109,6 +110,7 @@ To start out, let’s add a basic html page to our public folder and get it conn
     ```
     The first selector, `.small-box` selects all of the elements with the `small-box` class, while the second selects the **one** element with the id `big-box` (`id`s are exclusive--you can only assign them to one element on a page).  And they each define the width, height, and background-color for the divs.  If you go back the browser now, you should see your boxes.  Change some colors and add some more boxes to get a sense of how all this works.  Add some text to a box and see if you can style it.
 10. While most of the interactivity we build will happen with javascript, there are some things you can do with just css.  For instance, if you paste the following chunk of css at the bottom of your `style.css` file and then resize your web browser, you should see the `#big-box` div change size once the browser crosses the 600px-wide threshold:
+
     ```css
     @media screen and (max-width: 600px)  {
       #big-box {
