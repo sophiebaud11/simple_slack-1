@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var colors = require('colors/safe');
+require('dotenv').config();
+const { WebClient } = require('@slack/client');
+const token = process.env.SLACK_TOKEN;
+const web = new WebClient(token);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -91,26 +95,18 @@ router.post('/slack-events', function(req, res){
 })
 
 router.get('/slack-history', function(req, res, next){
-  var sampleData = [
-     {
-         "city": "New York",
-         "population": "8405837",
-         "state": "New York"
-     },
-     {
-         "city": "Los Angeles",
-         "population": "3884307",
-         "state": "California"
-     },
-     {
-         "city": "Chicago",
-         "population": "2718782",
-         "state": "Illinois"
-     }
-  ];
-  var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything.";
-  res.render('slack_history', {title: "Slack History", message: message, data: sampleData})
-  })
+  // See: https://api.slack.com/methods/channels.list
+  web.channels.list()
+    .then((data) => {
+      // `res` contains information about the channels
+      data.channels.forEach(c => console.log(c.name));
+      console.log(JSON.stringify(data, null, 4));
+      var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything.";
+      res.render('slack_history', {title: "Slack History", message: message, data: data.channels})
+    })
+    .catch(console.error);
+})
+
 
 
 module.exports = router;

@@ -388,3 +388,32 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 ## Using the Web api
 
     console.log("test)
+
+
+## The Slack Node package
+
+Much of our work will be greatly simplified by the `@slack/client` node package.  Let's install that and get it working.
+
+1. the Slack package can be found on npm and installed with the shell command `npm i -S @slack/client`.
+2. for now, let's require it in our `routes/index.js` file and test it out there.  Type the following near the top of your code (which is borrowed entirely from [Slack's guide to the node SDK](http://slackapi.github.io/node-slack-sdk/web_api), if you want even more info on all this):
+    ```
+    const { WebClient } = require('@slack/client');
+    const token = process.env.SLACK_TOKEN;
+    const web = new WebClient(token);
+    ```
+    Now, you need to make sure that you called your token (found on the OAuth page) `SLACK_TOKEN` in your `.env` file, otherwise this isn't going to work. 
+3. To start out, we're going to get a list of all our Slack channels, and send it as data to the `/slack-history` route we created earlier.  Go ahead and replace whatever you have for a `/slack-history` route right now with the following:
+    ```
+    router.get('/slack-history', function(req, res, next){
+      // See: https://api.slack.com/methods/channels.list
+      web.channels.list()
+        .then((data) => {
+          // `res` contains information about the channels
+          data.channels.forEach(c => console.log(c.name));
+          console.log(JSON.stringify(data, null, 4));
+          var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything.";
+          res.render('slack_history', {title: "Slack History", message: message, data: data.channels})
+        })
+        .catch(console.error);
+    })
+    ```
