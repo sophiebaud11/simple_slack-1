@@ -10,16 +10,13 @@
     <p>
         <%= message %>
     </p>
-    <form action="/slack-history-post" method="post">
-      <% for(i=0; i<data.length; i++){ %>
-        <input type="radio" name="channel" value=<%= data[i].id %>
-          <label>
-            <%= data[i].name %>
-          </label><br />
+    <ol>
+      <% for(i=0; i<data.messages.length; i++){ %>
+        <li>
+          <%= data.messages[i].text %>
+        </li>
       <%  } %>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+    </ol>
+
   </body>
 </html>

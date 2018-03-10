@@ -94,7 +94,7 @@ router.post('/slack-events', function(req, res){
   // console.log(JSON.stringify(req.body));
 })
 
-router.get('/slack-history', function(req, res, next){
+router.get('/slack-channels', function(req, res, next){
   // See: https://api.slack.com/methods/channels.list
   web.channels.list()
     .then((data) => {
@@ -102,15 +102,26 @@ router.get('/slack-history', function(req, res, next){
       data.channels.forEach(c => console.log(c.name));
       console.log(JSON.stringify(data, null, 4));
       var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything.";
-      res.render('slack_history', {title: "Slack History", message: message, data: data.channels})
+      res.render('slack_channels', {title: "Slack Channels", message: message, data: data.channels})
     })
     .catch(console.error);
 })
 
 router.post('/slack-history-post', function(req, res, next){
   console.log(JSON.stringify(req.body, null, 4));
-  res.send('got your post')
+  res.redirect(('/slack-history/' + req.body.channel))
 })
 
+router.get('/slack-history/:channel', function(req, res, next){
+  console.log(JSON.stringify(req.params, null, 4));
+  // res.send(req.params);
+  web.channels.history({channel: req.params.channel, count: 20}, function(err, data){
+    console.log(JSON.stringify(data, null, 4));
+    res.render('slack_history', {title: ("history for Slack Channel " + req.params.channel), message: "no message", data: data })
+  })
+
+
+
+})
 
 module.exports = router;

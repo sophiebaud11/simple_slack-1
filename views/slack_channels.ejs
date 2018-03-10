@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p>
+        <%= message %>
+    </p>
+    <form action="/slack-history-post" method="post">
+      <% for(i=0; i<data.length; i++){ %>
+        <input type="radio" name="channel" value=<%= data[i].id %>
+          <label>
+            <%= data[i].name %>
+          </label><br />
+      <%  } %>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>
