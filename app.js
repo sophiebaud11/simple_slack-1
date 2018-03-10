@@ -15,6 +15,12 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var botkit = require('botkit');
+
+var botController = botkit.slackbot({
+  debug: false
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,5 +56,14 @@ app.use(function(err, req, res, next) {
 });
 
 console.log(colors.rainbow('\n\n+++++++++++++++++++++++++++++++++\nsimple_slack app starting up/n/n'));
+
+botController.spawn({token: process.env.SLACK_TOKEN}).startRTM();
+
+botController.hears('hello', 
+  ['direct_message','direct_mention','mention'],
+  function(bot,message) {
+    bot.reply(message,'Hello yourself.');
+  }
+);
 
 module.exports = app;
