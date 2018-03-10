@@ -112,7 +112,7 @@ router.post('/slack-events', function(req, res){
     {
       "fallback": "Required plain-text summary of the attachment.",
       "color": "#36a64f",
-      "author_name": "Bobby Tables",
+      "author_name": "Shoot ID Bot",
       "author_link": "http://flickr.com/bobby/",
       "author_icon": "http://flickr.com/icons/bobby.jpg",
       "title": "Slack API Documentation",
