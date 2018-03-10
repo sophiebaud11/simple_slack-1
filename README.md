@@ -413,7 +413,7 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
         .catch(console.error);
     })
     ```
-    Once you add this, you'll be sending your channel list to the `slack_history.ejs` view, but you'll need to make sure that whatever you're doing in that file matches the structure of the js objects you are passing in.  Here is a sample of what this might look like:
+    Once you add this, you'll be sending your channel list to the `slack_history.ejs` view, but you'll need to make sure that whatever you're doing in that file matches the structure of the js objects you are passing in. Here is a sample of what this might look like:
     ```
 
     ```
