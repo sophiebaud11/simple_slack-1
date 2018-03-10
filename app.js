@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var colors = require('colors/safe');
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGODB_URL);
 
 
 var index = require('./routes/index');
@@ -45,6 +49,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-console.log(colors.rainbow('\n\n+++++++++++++++++++++++++++++++++\nsimple_slack app starting up/n/n')); 
+console.log(colors.rainbow('\n\n+++++++++++++++++++++++++++++++++\nsimple_slack app starting up/n/n'));
 
 module.exports = app;
