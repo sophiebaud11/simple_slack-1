@@ -94,7 +94,7 @@ router.post('/shootid-slash', function(req, res, next) {
 })
 
 router.post('/slack-events', function(req, res){
-  res.send(req.body.challenge);
+  res.status(200);
   // var newSlackEvent = new SlackEvent(req.body);
   // newSlackEvent.save(function(err){
   //   if (err) {console.log("there was an error");
