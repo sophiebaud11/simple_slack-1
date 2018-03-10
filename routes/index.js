@@ -85,7 +85,13 @@ router.post('/reallysimple-slash', function(req, res, next) {
 router.post('/shootid-slash', function(req, res, next) {
   console.log("got a request:");
   console.log(JSON.stringify(req.body, null, 4));
-  res.send('just received a message. will do more soon')
+  res.send('just received a message. will do more soon');
+  web.chat.postMessage({ channel: req.body.channel, text: 'Hello there' })
+  .then((res) => {
+    // `res` contains information about the posted message
+    console.log('Message sent: ', res.ts);
+  })
+  .catch(console.error);
 })
 
 router.post('/slack-events', function(req, res){
@@ -100,7 +106,7 @@ router.post('/slack-events', function(req, res){
   // })
   console.log(JSON.stringify(req.body));
   web.chat.postMessage({
-  channel: 'C9K09JN0N',
+  channel: req.body.channel,
   text: 'Hello there',
   attachments: [
     {
