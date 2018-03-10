@@ -401,7 +401,7 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
     const token = process.env.SLACK_TOKEN;
     const web = new WebClient(token);
     ```
-    Now, you need to make sure that you called your token (found on the OAuth page) `SLACK_TOKEN` in your `.env` file, otherwise this isn't going to work.
+    Now, you need to make sure that you called your token (found on the OAuth page) `SLACK_TOKEN` in your `.env` file, otherwise this isn't going to work. (And if you want to know why there are `{}` around `WebClient`, you'll have to learn a bit about [js destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment))
 3. To start out, we're going to get a list of all our Slack channels, and send it as data to the `/slack-history` route we created earlier.  Go ahead and replace whatever you have for a `/slack-history` route right now with the following:
     ```
     router.get('/slack-history', function(req, res, next){
