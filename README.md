@@ -403,7 +403,7 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
     ```
     Now, you need to make sure that you called your token (found on the OAuth page) `SLACK_TOKEN` in your `.env` file, otherwise this isn't going to work. (And if you want to know why there are `{}` around `WebClient`, you'll have to learn a bit about [js destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)).
 3. To start out, we're going to create a page that simply lists all of our Slack channels, giving the user the opportunity to select one and ask for the last 20 messages posted there.  We will create a new route called `slack-channels` for this, and we'll use the WebClient we stored in `web` to ask Slack for the list of channels:
-    ```
+    ```javascript
     router.get('/slack-channels', function(req, res, next){
       web.channels.list()
         .then((data) => {
@@ -414,8 +414,25 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
     })
     ```
     Once you add this, you'll be sending your channel list to the `slack_history.ejs` view, but you'll need to make sure that whatever you're doing in that file matches the structure of the js objects you are passing in. Here is a sample of what this might look like:
-    ```
-
+    ```html
+    <body>
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %></p>
+      <p>
+          <%= message %>
+      </p>
+      <form action="/slack-history-post" method="post">
+        <% for(i=0; i<data.length; i++){ %>
+          <input type="radio" name="channel" value=<%= data[i].id %>
+            <label>
+              <%= data[i].name %>
+            </label><br />
+        <%  } %>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </body>
     ```
 
 ## EXTRAS

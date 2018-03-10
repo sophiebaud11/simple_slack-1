@@ -101,8 +101,6 @@ router.post('/shootid-slash', function(req, res, next) {
     })
     .catch(console.error);
   });
-
-
 })
 
 router.post('/slack-events', function(req, res){
