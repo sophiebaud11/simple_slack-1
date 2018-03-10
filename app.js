@@ -71,7 +71,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-console.log(colors.rainbow('\n\n+++++++++++++++++++++++++++++++++\nsimple_slack app starting up/n/n'));
+console.log(colors.rainbow('\n\n+++++++++++++++++++++++++++++++++\nsimple_slack app starting up\n\n'));
 
 
 module.exports = app;
