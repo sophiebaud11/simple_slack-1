@@ -88,8 +88,13 @@ router.post('/shootid-slash', function(req, res, next) {
   res.send('just received a message. will do more soon');
 
   Shoot.find({"shootId" : {$regex : req.body.text}}, (err, data)=>{
-    console.log(JSON.stringify(data, null, 4));
-    web.chat.postMessage({ channel: req.body.channel_id, text: 'Hello there from the slackbot' })
+    var payload = {channel: req.body.channel_id, text: 'Event list:'};
+    var shootIdArray = [];
+    data.forEach(function(result){
+      payload.text += ("\n"+result.shootId);
+      shootIdArray.push(result.shootId);
+    })
+    web.chat.postMessage(payload)
     .then((res) => {
       // `res` contains information about the posted message
       console.log('Message sent: ', res.ts);
