@@ -15,11 +15,42 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-var botkit = require('botkit');
 
-var botController = botkit.slackbot({
-  debug: false
-});
+// new Slack RTM bot
+const { RTMClient } = require('@slack/client');
+var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
+var rtm = new RtmClient(process.env.SLACK_TOKEN);
+rtm.start();
+
+// The RTM client can send simple string messages
+rtm.sendMessage('Hello there', process.env.SLACK_TEST_CHANNEL)
+  .then((res) => {
+    // `res` contains information about the posted message
+    console.log('Message sent: ', res.ts);
+  })
+  .catch(console.error);
+
+
+let channel;
+// rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, (rtmStartData) => {
+//   for (const c of rtmStartData.channels) {
+//       if (c.is_member && c.name ==='jamiestestchannel') { channel = c.id }
+//   }
+//   console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}`);
+// });
+
+
+// var botkit = require('botkit');
+// var botController = botkit.slackbot({
+//   debug: false
+// });
+// botController.spawn({token: process.env.SLACK_TOKEN}).startRTM();
+// botController.hears('hello',
+//   ['direct_message','direct_mention','mention'],
+//   function(bot,message) {
+//     bot.reply(message,'Hello yourself.');
+//   }
+// );
 
 
 // view engine setup
@@ -57,13 +88,5 @@ app.use(function(err, req, res, next) {
 
 console.log(colors.rainbow('\n\n+++++++++++++++++++++++++++++++++\nsimple_slack app starting up/n/n'));
 
-botController.spawn({token: process.env.SLACK_TOKEN}).startRTM();
-
-botController.hears('hello', 
-  ['direct_message','direct_mention','mention'],
-  function(bot,message) {
-    bot.reply(message,'Hello yourself.');
-  }
-);
 
 module.exports = app;
