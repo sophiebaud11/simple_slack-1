@@ -401,20 +401,19 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
     const token = process.env.SLACK_TOKEN;
     const web = new WebClient(token);
     ```
-    Now, you need to make sure that you called your token (found on the OAuth page) `SLACK_TOKEN` in your `.env` file, otherwise this isn't going to work. (And if you want to know why there are `{}` around `WebClient`, you'll have to learn a bit about [js destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment))
-3. To start out, we're going to get a list of all our Slack channels, and send it as data to the `/slack-history` route we created earlier.  Go ahead and replace whatever you have for a `/slack-history` route right now with the following:
+    Now, you need to make sure that you called your token (found on the OAuth page) `SLACK_TOKEN` in your `.env` file, otherwise this isn't going to work. (And if you want to know why there are `{}` around `WebClient`, you'll have to learn a bit about [js destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)).
+3. To start out, we're going to create a page that simply lists all of our Slack channels, giving the user the opportunity to select one and ask for the last 20 messages posted there.  We will create a new route called `slack-channels` for this, and we'll use the WebClient we stored in `web` to ask Slack for the list of channels: 
     ```
-    router.get('/slack-history', function(req, res, next){
-      // See: https://api.slack.com/methods/channels.list
+    router.get('/slack-channels', function(req, res, next){
       web.channels.list()
         .then((data) => {
-          // `res` contains information about the channels
-          data.channels.forEach(c => console.log(c.name));
           console.log(JSON.stringify(data, null, 4));
-          var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything.";
-          res.render('slack_history', {title: "Slack History", message: message, data: data.channels})
+          res.render('slack_channels', {title: "Slack Channel List", message: "here are your slack channels", data: data.channels})
         })
         .catch(console.error);
     })
     ```
-    Once you add this, you'll be sending your channel list to the `slack_history.ejs` view, but you'll need to make sure that whatever you're doing in that file matches the structure of the js objects you are passing in.
+    Once you add this, you'll be sending your channel list to the `slack_history.ejs` view, but you'll need to make sure that whatever you're doing in that file matches the structure of the js objects you are passing in.  Here is a sample of what this might look like:
+    ```
+
+    ```

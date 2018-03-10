@@ -81,6 +81,13 @@ router.post('/reallysimple-slash', function(req, res, next) {
   res.send('just received a message. will do more soon')
 })
 
+
+router.post('/shootid-slash', function(req, res, next) {
+  console.log("got a request:");
+  console.log(JSON.stringify(req.body, null, 4));
+  res.send('just received a message. will do more soon')
+})
+
 router.post('/slack-events', function(req, res){
   res.send(req.body.challenge);
   // var newSlackEvent = new SlackEvent(req.body);
@@ -95,14 +102,10 @@ router.post('/slack-events', function(req, res){
 })
 
 router.get('/slack-channels', function(req, res, next){
-  // See: https://api.slack.com/methods/channels.list
   web.channels.list()
     .then((data) => {
-      // `res` contains information about the channels
-      data.channels.forEach(c => console.log(c.name));
       console.log(JSON.stringify(data, null, 4));
-      var message = "Ultimately, we'll put our Slack App here.  The variable we're passing in here could contain anything.";
-      res.render('slack_channels', {title: "Slack Channels", message: message, data: data.channels})
+      res.render('slack_channels', {title: "Slack Channel List", message: "here are your slack channels", data: data.channels})
     })
     .catch(console.error);
 })
