@@ -87,7 +87,7 @@ router.post('/shootid-slash', function(req, res, next) {
   console.log(JSON.stringify(req.body, null, 4));
   res.send('just received a message. will do more soon');
 
-  Shoot.find({"shootId" : {$regex : req.body.text}}, (err, data)=>{
+  Shoot.find({"shootId" : {$regex : (req.body.text + "/gi")}}, (err, data)=>{
     var payload = {channel: req.body.channel_id, text: 'Event list:'};
     var shootIdArray = [];
     data.forEach(function(result){
