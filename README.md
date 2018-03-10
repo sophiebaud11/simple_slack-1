@@ -417,3 +417,10 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
     ```
 
     ```
+
+## EXTRAS
+
+1. Working from elsewhere.  If you begin working on another machine, you'll need to clone your repository there, `npm install` all the packages, and you'll have to create a `.env` file for all the secret info again.  You will also need to reconnect to heroku too:
+    ```
+    heroku git:remote -a thawing-inlet-61413
+    ```
