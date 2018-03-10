@@ -89,7 +89,7 @@ router.post('/shootid-slash', function(req, res, next) {
 })
 
 router.post('/slack-events', function(req, res){
-  res.send(req.body.challenge);
+  // res.send(req.body.challenge);
   // var newSlackEvent = new SlackEvent(req.body);
   // newSlackEvent.save(function(err){
   //   if (err) {console.log("there was an error");
@@ -98,7 +98,40 @@ router.post('/slack-events', function(req, res){
   //     console.log("saved event to db");
   //   }
   // })
-  // console.log(JSON.stringify(req.body));
+  console.log(JSON.stringify(req.body));
+  web.chat.postMessage({
+  channel: 'C9K09JN0N',
+  text: 'Hello there',
+  attachments: [
+    {
+      "fallback": "Required plain-text summary of the attachment.",
+      "color": "#36a64f",
+      "author_name": "Bobby Tables",
+      "author_link": "http://flickr.com/bobby/",
+      "author_icon": "http://flickr.com/icons/bobby.jpg",
+      "title": "Slack API Documentation",
+      "title_link": "https://api.slack.com/",
+      "text": "Optional text that appears within the attachment",
+      "fields": [
+        {
+          "title": "Priority",
+          "value": "High",
+          "short": false
+        }
+      ],
+      "image_url": "http://my-website.com/path/to/image.jpg",
+      "thumb_url": "http://example.com/path/to/thumb.png",
+      "footer": "Slack API",
+      "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
+      "ts": 123456789
+    }
+  ]
+})
+  .then((res) => {
+    // `res` contains information about the posted message
+    console.log('Message sent: ', res.ts);
+  })
+  .catch(console.error);
 })
 
 router.get('/slack-channels', function(req, res, next){
