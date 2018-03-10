@@ -103,16 +103,16 @@ router.post('/slack-events', function(req, res){
   //     console.log("saved event to db");
   //   }
   // })
-  console.log('just got an event \n' + JSON.stringify(req.body));
-  console.log('going to respond in channel ' + req.body.event.channel);
-  web.chat.postMessage({channel: req.body.event.channel, text: ("hello from shootid-bot in response to " + req.body.event.text)}, function(err, data){
-    if (err) {
-      console.log(err);
-    }
-    else {
-      console.log('message sent');
-    }
-  })
+  // console.log('just got an event \n' + JSON.stringify(req.body));
+  // console.log('going to respond in channel ' + req.body.event.channel);
+  // web.chat.postMessage({channel: req.body.event.channel, text: ("hello from shootid-bot in response to " + req.body.event.text)}, function(err, data){
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   else {
+  //     console.log('message sent');
+  //   }
+  // })
 })
 
 router.get('/slack-channels', function(req, res, next){
