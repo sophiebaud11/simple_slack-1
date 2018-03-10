@@ -107,6 +107,10 @@ router.get('/slack-history', function(req, res, next){
     .catch(console.error);
 })
 
+router.post('/slack-history-post', function(req, res, next){
+  console.log(JSON.stringify(req.body, null, 4));
+  res.send('got your post')
+})
 
 
 module.exports = router;
