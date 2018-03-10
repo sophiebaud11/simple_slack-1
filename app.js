@@ -18,7 +18,7 @@ var app = express();
 
 // new Slack RTM bot
 const { RTMClient } = require('@slack/client');
-var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
+// var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
 var rtm = new RTMClient(process.env.SLACK_TOKEN);
 rtm.start();
 
