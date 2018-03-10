@@ -10,47 +10,32 @@ const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URL);
 
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
-// new Slack RTM bot
+
 const { RTMClient } = require('@slack/client');
-// var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
-var rtm = new RTMClient(process.env.SLACK_TOKEN);
+
+// An access token (from your Slack app or custom integration - usually xoxb)
+const token = process.env.SLACK_BOT_TOKEN;
+
+// The client is initialized and then started to get an active connection to the platform
+const rtm = new RTMClient(token);
 rtm.start();
 
+// This argument can be a channel ID, a DM ID, a MPDM ID, or a group ID
+// See the "Combining with the WebClient" topic below for an example of how to get this ID
+const conversationId = process.env.SLACK_TEST_CHANNEL;
+
 // The RTM client can send simple string messages
-rtm.sendMessage('Hello there', process.env.SLACK_TEST_CHANNEL)
+rtm.sendMessage('Hello there', conversationId)
   .then((res) => {
     // `res` contains information about the posted message
     console.log('Message sent: ', res.ts);
   })
   .catch(console.error);
-
-
-let channel;
-// rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, (rtmStartData) => {
-//   for (const c of rtmStartData.channels) {
-//       if (c.is_member && c.name ==='jamiestestchannel') { channel = c.id }
-//   }
-//   console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}`);
-// });
-
-
-// var botkit = require('botkit');
-// var botController = botkit.slackbot({
-//   debug: false
-// });
-// botController.spawn({token: process.env.SLACK_TOKEN}).startRTM();
-// botController.hears('hello',
-//   ['direct_message','direct_mention','mention'],
-//   function(bot,message) {
-//     bot.reply(message,'Hello yourself.');
-//   }
-// );
 
 
 // view engine setup
