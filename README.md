@@ -413,7 +413,42 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
         .catch(console.error);
     })
     ```
-    Once you add this, you'll be sending your channel list to the `slack_history.ejs` view, but you'll need to make sure that whatever you're doing in that file matches the structure of the js objects you are passing in. Here is a sample of what this might look like:
+    Once you add this, you'll be sending your channel list to the `slack_history.ejs` view, but you'll need to make sure that whatever you're doing in that file matches the structure of the js objects you are passing in. Here is a sample of what the objects you get from Slack will look like:
+    ```JavaScript
+    {
+            "id": "X9JKAG8J3",
+            "name": "test-channel-001",
+            "is_channel": true,
+            "created": 1520624742,
+            "is_archived": false,
+            "is_general": false,
+            "unlinked": 0,
+            "creator": "U3PL364JK",
+            "name_normalized": "test-channel-001",
+            "is_shared": false,
+            "is_org_shared": false,
+            "is_member": true,
+            "is_private": false,
+            "is_mpim": false,
+            "members": [
+                "U3PL364JK",
+                "U4PL364JL"
+            ],
+            "topic": {
+                "value": "",
+                "creator": "",
+                "last_set": 0
+            },
+            "purpose": {
+                "value": "just a test",
+                "creator": "U3PL364JK",
+                "last_set": 1520624742
+            },
+            "previous_names": [],
+            "num_members": 2
+        }
+    ```
+    And to handle this in the `slack_history.ejs` file, you might do something like this:
     ```html
     <body>
       <h1><%= title %></h1>
