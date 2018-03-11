@@ -472,6 +472,7 @@ Much of our work will be greatly simplified by the `@slack/client` node package.
       </form>
     </body>
     ```
+    In this form, we'll set the `value` to the channel's `.id` property, because that's actually what we'll be using when we communicate with Slack.  
 
 ## EXTRAS
 
