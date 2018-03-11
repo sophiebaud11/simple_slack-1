@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var colors = require('colors/safe');
 require('dotenv').config();
 const mongoose = require('mongoose');
-
 mongoose.connect(process.env.MONGODB_URL);
 
 var index = require('./routes/index');
