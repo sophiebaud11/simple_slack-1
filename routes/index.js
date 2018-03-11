@@ -6,10 +6,11 @@ const { WebClient } = require('@slack/client');
 const token = process.env.SLACK_TOKEN;
 const web = new WebClient(token);
 var Shoot = require("../models/shoot.js");
+var indexLinks = require("../data/urls/index_links.json")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Simple Slack' });
+  res.render('index', { title: 'Simple Slack', message: 'a simple page', links: indexLinks });
 });
 
 router.post('/slack-interactions', function(req, res, next) {
@@ -86,7 +87,6 @@ router.post('/shootid-slash', function(req, res, next) {
   console.log("got a request:");
   console.log(JSON.stringify(req.body, null, 4));
   res.send('just received a message. will do more soon');
-
   Shoot.find({"shootId" : {$regex : (req.body.text), $options : "i"}}, (err, data)=>{
     var payload = {channel: req.body.channel_id, text: 'Event list:'};
     var shootIdArray = [];
@@ -98,6 +98,7 @@ router.post('/shootid-slash', function(req, res, next) {
     .then((res) => {
       // `res` contains information about the posted message
       console.log('Message sent: ', res.ts);
+      console.log(JSON.stringify(shootIdArray));
     })
     .catch(console.error);
   });
