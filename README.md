@@ -22,7 +22,7 @@ Here are the steps for creating the blank express app template (and connecting i
 2. clone to this repository to your computer by opening up Terminal, navigating to your Development folder (`cd ~/Development` on our machines) and pasting in the `git clone [REPO_NAME]` text that you copy from the repository page. Hit enter and should be all set. ![clone-repo](https://raw.githubusercontent.com/learninglab-dev/simple_slack/master/public/images/clone-repo.png)
 3. if you now type `ls` (for "list"), you should see a folder with the same name as your repository—this is where you are going to put your app
 4. change directories into your app's root folder by typing `cd [MY_APP]`
-5. use express-generator to create an empty express app template by typing `express —view=ejs` (go ahead and enter `ls` to take a look at what has shown up after this command)
+5. use express-generator to create an empty express app template by typing `express --view=ejs` (go ahead and enter `ls` to take a look at what has shown up after this command)
 6. install node modules with `npm install`
 7. at this point you should be able to type `npm start` and then open the app up in your web browser at [localhost:3000](http://localhost:3000).
 8. now that we have an blank template, we will want to begin adding some code, so go back to Terminal (and still inside your app's root folder), type `atom .` to open up the contents of the current directory in Atom (your text editor).
@@ -266,7 +266,8 @@ We're going to be running lots of js code on the server side, but we will also b
     </ol>
     ```
     Here we start up an ordered list, then **inside the `<ol>` tags** we write a loop in js that loops through the data array.  Then, inside `li` tags, we create a sentence for each element `data[i]`, calling its `.city` and `.population` properties.
-8.
+8. _include partials_
+9. _loop through links in json_
 
 ## Forms, Posts, MongoDB
 
@@ -315,20 +316,6 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 
 11.  Now we're going to zip through a bunch of the settings we can access through the links in the "Features" section of the left sidebar.  
 
-## Enable Interactive Components
-1. Start by clicking "Interactive Components"
-2. You'll need to paste in a URL for the API endpoint you are going to build in your simple-slack app.  So copy your Heroku URL and paste it in, and then add a slash and a name you'll remember. Something like `https://rocky-earth-53316.herokuapp.com/slack-interactions`  
-3. That `/slack-interactions` is a route you are going to have to build.  So open up the `index.js` file in your `routes` folder and start with the following code:
-    ```
-    router.post('/slack-interactions', function(req, res, next) {
-      console.log(JSON.stringify(req.body, null, 4))
-      res.send('got your message');
-    });
-    ```
-    As usual, don't just paste but try to make sure you get what each part of this code is doing.
-
-4. handle?
-
 
 
 ## Creating a Slash Command
@@ -367,11 +354,34 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 6. There are many more things you can add to the messages, including color options, footers, timestamps, etc.  We are going to concentrate on adding buttons, because they'll allow our users to communicate with our app.  To start,   _interactive messages_
 7. _message permanence_
 
-## OAUTH and Permissions
 
-1. add channel history
-2. add reaction history
+## Enable Interactive Components
+1. Start by clicking "Interactive Components"
+2. You'll need to paste in a URL for the API endpoint you are going to build in your simple-slack app.  So copy your Heroku URL and paste it in, and then add a slash and a name you'll remember. Something like `https://rocky-earth-53316.herokuapp.com/slack-interactions`  
+3. That `/slack-interactions` is a route you are going to have to build.  So open up the `index.js` file in your `routes` folder and start with the following code:
+    ```
+    router.post('/slack-interactions', function(req, res, next) {
+      console.log(JSON.stringify(req.body, null, 4))
+      res.send('got your message');
+    });
+    ```
+    As usual, don't just paste but try to make sure you get what each part of this code is doing.
 
+4. handle?
+
+
+
+## OAuth and Permissions
+We aren't going to cover how to manage OAuth verifications in this tutorial (you will have master OAuth if you want to distribute your Slack App to the broader public).  But we need to dive into the elements we'll find on the "OAuth and Permissions" page (accessible via sidebar link). This is where we'll specify which API methods we'll enable for our app. You might think that you may as well enable everything and then figure out what to use later on. And you could do this. But it is generally safer to limit your app's permissions to only the methods you really really need.
+1. The first thing we'll do on this page is copy the OAuth Access Token, and we'll save this to our `.env` file as as the `SLACK_TOKEN`.
+2. Next, we'll scroll down to the "Scopes" section, and we'll select a number of scopes to add:
+    1. `channels.history`
+    2. `channels.read`
+    3. `channels.write`
+    4. `reactions.read`
+    5. `users.read`
+    Add these one by one, click save, and then click to reinstall the app (when it asks you again for a specific channel, this is just for the webhook you installed--go ahead and choose the channel you want webhook messages to go to again--you will still be able to send messages to other channels using the Web API).
+3. If you are in a hurry to see what the methods that use these scopes can do for you, go ahead and [create a legacy token](https://api.slack.com/custom-integrations/legacy-tokens) and test out the [channels.list](https://api.slack.com/methods/channels.list/test) method (or any others that match scopes you've added). You can generate the exact same JSON we'll later generate in our app through the Slack API website.  And you can even get a URL that will send back your raw JSON (though Slack suggests that you move away from using these tokens in favor of the OAuth tokens). In this tutorial we are going to hold off on using these methods, but we'll get to them soon.
 
 ## Event Subscriptions
 
@@ -387,7 +397,7 @@ Heroku already has [an amazing tutorial for developers wanting to deploy node.js
 
 ## Using the Web api
 
-    console.log("test)
+1.
 
 
 ## The Slack Node package

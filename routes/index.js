@@ -6,11 +6,13 @@ const { WebClient } = require('@slack/client');
 const token = process.env.SLACK_TOKEN;
 const web = new WebClient(token);
 var Shoot = require("../models/shoot.js");
-var indexLinks = require("../data/urls/index_links.json")
+var indexLinks = require("../data/urls/index_links.json");
+var fonts = require("../data/urls/fonts.json")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Simple Slack', message: 'a simple page', links: indexLinks });
+  var randomizer = Math.floor(Math.random()*(fonts.length));
+  res.render('index', { title: 'Simple Slack', message: 'a simple page', links: indexLinks, randomFont: fonts[randomizer]});
 });
 
 router.post('/slack-interactions', function(req, res, next) {
@@ -148,9 +150,6 @@ router.get('/slack-history/:channel', function(req, res, next){
     console.log(JSON.stringify(data, null, 4));
     res.render('slack_history', {title: ("history for Slack Channel " + req.params.channel), message: "no message", data: data })
   })
-
-
-
 })
 
 module.exports = router;

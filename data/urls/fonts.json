@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Nanum Pen Script",
+    "urlName": "Nanum+Pen+Script",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Nanum+Pen+Script"
+  },
+  {
+    "name": "Rozha One",
+    "urlName": "Rozha+One",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Rozha+One"
+  },
+  {
+    "name": "Limelight",
+    "urlName": "Limelight",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Limelight"
+  },
+  {
+    "name": "Anton",
+    "urlName": "Anton",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Anton"
+  },
+  {
+    "name": "Abril Fatface",
+    "urlName": "Abril+Fatface",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Abril+Fatface"
+  },
+  {
+    "name": "Amatic SC",
+    "urlName": "Amatic+SC",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Amatic+SC"
+  },
+  {
+    "name": "EB Garamond",
+    "urlName": "EB+Garamond",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=EB+Garamond"
+  },
+  {
+    "name": "Berkshire Swash",
+    "urlName": "Berkshire+Swash",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Berkshire+Swash"
+  },
+  {
+    "name": "Cinzel",
+    "urlName": "Cinzel",
+    "weight": "200",
+    "importUrl":"https://fonts.googleapis.com/css?family=Cinzel"
+  },
+  {
+    "name": "Permanent Marker",
+    "urlName": "Permanent+Marker",
+    "weight": "900",
+    "importUrl":"https://fonts.googleapis.com/css?family=Permanent+Marker"
+  },
+  {
+    "name": "Poiret One",
+    "urlName": "Poiret+One",
+    "weight": "300",
+    "importUrl":"https://fonts.googleapis.com/css?family=Poiret+One"
+  },
+  {
+    "name": "Nanum Brush Script",
+    "urlName": "Nanum+Brush+Script",
+    "weight": "300",
+    "importUrl":"https://fonts.googleapis.com/css?family=Nanum+Brush+Script"
+  },
+  {
+    "name": "Kaushan Script",
+    "urlName": "Kaushan+Script",
+    "weight": "300",
+    "importUrl":"https://fonts.googleapis.com/css?family=Kaushan+Script"
+  }
+]
