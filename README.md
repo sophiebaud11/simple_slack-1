@@ -1,4 +1,4 @@
-# SIMPLE EXPRESS & SLACK APP TUTORIAL
+# SIMPLE EXPRESS & SLACK APP TUTORIAL--BY SOPHIE
 
 [Express](https://expressjs.com/) is a ‘minimalist’ framework for [node.js](https://nodejs.org/en/about/) applications. It will offer us a fast, relatively simple way to get started building a web application, which in this case will also involve hooks into our Slack team.
 
